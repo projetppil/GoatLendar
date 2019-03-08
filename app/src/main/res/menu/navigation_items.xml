@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+        <group android:checkableBehavior="single">
+        <item android:id="@+id/notification"
+          android:icon="@drawable/ic_alarm"
+          android:title="Alertes"/>
+        <item android:id="@+id/calendrier"
+          android:icon="@drawable/ic_calendar"
+          android:title="Évènements"/>
+        <item android:id="@+id/calendrierEvent"
+          android:icon="@drawable/ic_calendarr"
+          android:title="Mes Évènements"/>
+        <item android:id="@+id/amis"
+              android:icon="@drawable/ic_group_add_black_24dp"
+              android:title="Mes Amis"/>
+        <item android:id="@+id/clendrierPropretaire"
+              android:icon="@drawable/ic_small_calendar"
+              android:title="Mes Calendriers"/>
+        <item android:id="@+id/impor"
+              android:icon="@drawable/ic_emporter"
+              android:title="Importer"/>
+        <item android:id="@+id/settings"
+              android:icon="@drawable/ic_settings_black_24dp"
+              android:title="Paramétres de compte"/>
+        <item android:id="@+id/exit"
+              android:icon="@drawable/ic_logout"
+              android:title="Déconnexion"/>
+
+        </group>
+</menu>
