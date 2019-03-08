@@ -8,11 +8,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".MainActivity"
-        android:orientation="vertical"
         android:background="@drawable/background"
         android:paddingLeft="40dp"
         android:paddingRight="40dp"
-        >
+        android:orientation="vertical">
 
     <TextView
             android:text="Inscription"
@@ -21,7 +20,8 @@
             android:textSize="32dp"
             android:textColor="#FFF"
             android:layout_marginTop="10dp"
-            android:textAlignment="center" android:textAllCaps="false" android:fontFamily="monospace"/>
+            android:textAlignment="center" android:textAllCaps="false" android:fontFamily="monospace"
+    />
 
 
     <TextView
@@ -97,7 +97,7 @@
               android:layout_height="40dp"
               android:background="@drawable/radius"
               android:layout_marginTop="10dp"
-              android:hint="Retaper votre mot de passe"
+              android:hint="Retapez votre mot de passe"
               android:paddingLeft="10dp"/>
 
     <Button android:layout_width="match_parent"

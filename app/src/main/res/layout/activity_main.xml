@@ -23,7 +23,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="18dp"
-            android:textColor="#FFF" android:layout_marginTop="10dp"/>
+            android:textColor="#FFF"
+            android:layout_marginTop="10dp"/>
 
 
     <EditText android:layout_width="match_parent"
@@ -31,12 +32,13 @@
               android:background="@drawable/radius"
               android:layout_marginTop="10dp"
               android:hint="Votre email"
-              android:paddingLeft="10dp"/>
+              android:paddingLeft="10dp"
+              android:id="@id/Email"/>
 
     <TextView
             android:text="Mot de passe"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" android:id="@+id/Email"
+            android:layout_height="wrap_content"
             android:textSize="18dp"
             android:textColor="#fff"
             android:layout_marginTop="10dp"/>
@@ -45,11 +47,12 @@
 
     <EditText android:layout_width="match_parent"
               android:layout_height="40dp"
+              android:id="@+id/password"
               android:background="@drawable/radius"
               android:layout_marginTop="10dp"
               android:inputType="textPassword"
               android:paddingLeft="10dp"
-              android:hint="password"
+              android:hint="Votre Mot de passe"
               />
 
     <LinearLayout android:layout_width="match_parent"
@@ -63,7 +66,7 @@
 
                 />
         <TextView
-            android:text="Mot de passe oublier"
+            android:text="Mot de passe oublié"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="18dp"
@@ -92,7 +95,7 @@
     <TextView
             android:text="Inscription"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" android:id="@+id/Email"
+            android:layout_height="wrap_content"
             android:textSize="16dp"
             android:textColor="#fff"
             android:layout_marginTop="10dp"
