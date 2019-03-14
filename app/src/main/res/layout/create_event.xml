@@ -236,7 +236,7 @@
                 android:paddingLeft="10dp" />
 
             <Space
-                style="14dp"
+                style="18dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
@@ -270,7 +270,7 @@
             <Space
                 style="20dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="27dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
