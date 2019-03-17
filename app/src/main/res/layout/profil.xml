@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:layout_width="fill_parent"
+             android:layout_height="fill_parent"
+             android:layout_alignParentTop="true"
+             android:layout_centerHorizontal="true" >
+
+    <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="300dp"
+            android:background="@drawable/background"
+            android:scaleType="fitXY" />
+
+    <ImageView
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="40dip"
+            android:background="@drawable/user"
+            android:id="@+id/photoprofil"
+    />
+
+
+    <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="-75dip"
+            android:id="@+id/NomPrenomUtilisateur"
+            android:text="Steve Jobs"
+            android:textAlignment="center"
+            android:textSize="36dp"
+            android:textColor="@color/black"
+    />
+
+    <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="-115dip"
+            android:id="@+id/EmailUtilisateur"
+            android:text="steve.jobs@gmail.com"
+            android:textAlignment="center"
+            android:textSize="12dp"
+            android:textColor="@color/black"
+    />
+
+
+
+
+        <ImageView
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="-195dip"
+                android:layout_marginLeft="115dp"
+                android:background="@drawable/ic_group_add_black_24dp"
+        />
+        <ImageView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="-195dip"
+                android:layout_marginLeft="-120dp"
+                android:background="@drawable/ic_calendarr"
+        />
+        <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="-175dip"
+                android:background="@drawable/ic_like"
+        />
+
+
+
+
+
+</FrameLayout>
