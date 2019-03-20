@@ -39,7 +39,7 @@ public class Favoris extends GestionnaireAmis{
      * @param nom Nom du nouveau groupe
      * @param listeAmi Liste des amis de départ qui vont composer le groupe
      */
-    public void creerGroupe(String nom, ArrayList<CompteUtilisateur> listeAmi){
+  /*  public void creerGroupe(String nom, ArrayList<CompteUtilisateur> listeAmi){
         groupes.add(new Groupe(nom,listeAmi));
-    }
+    }*/
 }
