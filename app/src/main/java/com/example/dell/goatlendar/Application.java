@@ -3,9 +3,13 @@ package com.example.dell.goatlendar;
 import java.util.ArrayList;
 
 public class Application {
-
+    public static Application instance  =  new Application();
     private CompteUtilisateur utilisateurActuel;
     private GestionnaireMail mail;
+
+    private Application(){
+
+    }
 
     public void majBDD(){
 
@@ -43,6 +47,11 @@ public class Application {
     public void modifierDonnees(Evenement e, ArrayList<> donnees){}
 
     public void afficherEvenement(Evenement event){
-        event.
+
     }
+
+     public  static Application  getInstance(){
+           return instance;
+     }
+
 }

@@ -9,18 +9,41 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".ControleurLogin">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+
+        <activity
+                android:name=".ControleurMenu"
+                android:label="@string/title_activity_accueil"
+                android:theme="@style/AccueilTheme"
+        >
+        </activity>
+
         <activity
                 android:name=".Accueil"
+                android:label="Événements"
+                android:theme="@style/AppTheme">
+        </activity>
+
+
+        <activity
+                android:name=".ControleurInscription"
                 android:label="@string/title_activity_accueil"
                 android:theme="@style/AppTheme">
         </activity>
+
+        <activity
+                android:name=".ControleurEvenement"
+                android:label="Evénement"
+                android:theme="@style/AppTheme">
+        </activity>
+
+
     </application>
 
 </manifest>
