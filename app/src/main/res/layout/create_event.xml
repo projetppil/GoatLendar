@@ -272,6 +272,45 @@
                 android:layout_width="match_parent"
                 android:layout_height="27dp" />
 
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Amis"
+                android:textSize="18sp" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="8dp" />
+
+            <EditText
+                android:id="@+id/nom_recherche_ami"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="Recherche un ami" />
+
+            <ListView
+                android:id="@+id/liste_affichage_amis"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <Space
+                style="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="11dp" />
+
+
+            <ListView
+                android:id="@+id/liste_amis"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="14dp" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -291,7 +330,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:backgroundTint="@color/colorPrimary"
-                    android:text="Suivant" />
+                    android:text="Valider" />
             </LinearLayout>
 
         </LinearLayout>
