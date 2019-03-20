@@ -11,9 +11,9 @@ public class GestionnaireNotifications {
     // Compteur des id pour les notifs
     private static int id=0;
 
-    public void notifieSupression(Evenement event){
+   /* public void notifieSupression(Evenement event){
         id++;
-    }
+    }*/
 
     /**
      * @param id id de la notification à retourner

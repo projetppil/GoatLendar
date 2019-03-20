@@ -5,22 +5,22 @@ import java.util.ArrayList;
 public abstract class GestionnaireAmis {
 
     // Liste des amis de l'utilisateur
-    private ArrayList<CompteUtilisateur> users;
+    //private ArrayList<CompteUtilisateur> users;
 
     /**
      * Constructeur de la classe
      */
     public GestionnaireAmis(){
-        users = new ArrayList<>();
+       // users = new ArrayList<>();
     }
 
     /**
      * Ajoute un utilisateur en ami
      * @param ami Ami à ajouter
      */
-    public void ajouter(CompteUtilisateur ami){
+    /*public void ajouter(CompteUtilisateur ami){
         users.add(ami);
-    }
+    }*/
 
     public void majBDD(){
 
