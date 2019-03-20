@@ -1,4 +1,4 @@
-package com.example.dell.goatlendar;
+package com.example.dell.goatlendar.Controleur;
 
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -13,6 +13,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
+import com.example.dell.goatlendar.R;
 
 public class ControleurMenu extends AppCompatActivity {
     private ActionBarDrawerToggle actionBarDrawerToggle;

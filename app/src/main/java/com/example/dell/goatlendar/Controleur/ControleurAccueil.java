@@ -1,4 +1,4 @@
-package com.example.dell.goatlendar;
+package com.example.dell.goatlendar.Controleur;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import com.example.dell.goatlendar.R;
 
 public class ControleurAccueil extends Fragment  {
     @Nullable

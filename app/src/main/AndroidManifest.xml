@@ -9,7 +9,7 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".ControleurLogin">
+        <activity android:name=".Controleur.ControleurLogin">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -18,27 +18,27 @@
         </activity>
 
         <activity
-                android:name=".ControleurMenu"
+                android:name=".Controleur.ControleurMenu"
                 android:label="@string/title_activity_accueil"
                 android:theme="@style/AccueilTheme"
         >
         </activity>
 
         <activity
-                android:name=".Accueil"
+                android:name=".Controleur.Accueil"
                 android:label="Événements"
                 android:theme="@style/AppTheme">
         </activity>
 
 
         <activity
-                android:name=".ControleurInscription"
+                android:name=".Controleur.ControleurInscription"
                 android:label="@string/title_activity_accueil"
                 android:theme="@style/AppTheme">
         </activity>
 
         <activity
-                android:name=".ControleurEvenement"
+                android:name=".Controleur.ControleurEvenement"
                 android:label="Evénement"
                 android:theme="@style/AppTheme">
         </activity>

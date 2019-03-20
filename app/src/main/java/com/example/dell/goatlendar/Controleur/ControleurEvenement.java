@@ -1,4 +1,4 @@
-package com.example.dell.goatlendar;
+package com.example.dell.goatlendar.Controleur;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import com.example.dell.goatlendar.R;
 
 public class ControleurEvenement extends Fragment {
     @Nullable

@@ -1,9 +1,13 @@
 package com.example.dell.goatlendar;
 
+import com.example.dell.goatlendar.Social.GestionnaireAmis;
+import com.example.dell.goatlendar.evenement.Evenement;
+import com.example.dell.goatlendar.user.CompteUtilisateur;
+
 import java.util.ArrayList;
 
 public class Application {
-    public static Application instance  =  new Application();
+   public static Application instance  =  new Application();
     private CompteUtilisateur utilisateurActuel;
     private GestionnaireMail mail;
 
@@ -20,7 +24,7 @@ public class Application {
     }
 
     public void supprimerAmi(String s, String g){
-        utilisateurActuel.supprimerAmi(s,g);
+        //utilisateurActuel.supprimerAmi(s,g);
     }
 
     public void changerAffichage(String a){
@@ -33,18 +37,20 @@ public class Application {
     }
 
     public void afficherAmis(GestionnaireAmis amis){
-        amis.afficherAmis();
+       // amis.afficherAmis();
     }
 
     public void ajouterAmisGroupe(String a,String g){
-        utilisateurActuel.ajouterAmisGroupe(a,g);
+        //utilisateurActuel.ajouterAmisGroupe(a,g);
     }
 
-    public boolean verifierDonnees(ArrayList<> donnees){
-
+    //TODO on sait c'est quoi les paramètres
+    public boolean verifierDonnees(ArrayList<String> donnees){
+           return true;
     }
+    //TODO on sait c'est quoi les paramètres
 
-    public void modifierDonnees(Evenement e, ArrayList<> donnees){}
+    public void modifierDonnees(Evenement e, ArrayList<String> donnees){}
 
     public void afficherEvenement(Evenement event){
 

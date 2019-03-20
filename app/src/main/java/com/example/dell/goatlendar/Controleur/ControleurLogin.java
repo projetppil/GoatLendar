@@ -1,9 +1,10 @@
-package com.example.dell.goatlendar;
+package com.example.dell.goatlendar.Controleur;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import com.example.dell.goatlendar.R;
 
 public class ControleurLogin extends AppCompatActivity {
     @Override
