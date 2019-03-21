@@ -45,12 +45,14 @@ public class ControleurMenu extends AppCompatActivity {
                 FragmentManager fg = getSupportFragmentManager();
                 switch (menuItem.getItemId()) {
                     case R.id.notification:
-                        //ajouter l'action d'ouverture d'activity notification
+                        ConroleurNotifications app = new ConroleurNotifications();
+                        toolbar.setTitle("Notifications");
+                        fg.beginTransaction().replace(R.id.main , app).addToBackStack("back1").commit();
                         return true;
                     case R.id.calendrier:
-                        ControleurAccueil app = new ControleurAccueil();
+                        ControleurAccueil app2 = new ControleurAccueil();
                         toolbar.setTitle("Événements");
-                        fg.beginTransaction().replace(R.id.main, app).commit();
+                        fg.beginTransaction().replace(R.id.main, app2).commit();
 
                         return true;
                     case R.id.calendrierEvent:
