@@ -7,41 +7,39 @@
     >
 
     <ScrollView
-        android:layout_width="395dp"
-        android:layout_height="715dp"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="8dp">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="20dp">
 
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="29dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_horizontal">
 
                 <TextView
                     android:id="@+id/textView"
-                    android:layout_width="151dp"
-                    android:layout_height="match_parent"
-                    android:text="Créer "
-                    android:textAlignment="textEnd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nouveau "
                     android:textColor="@color/colorPrimary"
-                    android:textSize="36sp" />
+                    android:textSize="28sp" />
 
                 <TextView
                     android:id="@+id/textView3"
-                    android:layout_width="244dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="un événement"
+                    android:textColor="#000"
+                    android:text="Evénement"
                     android:textAlignment="viewStart"
-                    android:textSize="36sp" />
+                    android:textSize="28sp" />
+
             </LinearLayout>
 
             <Space
@@ -53,6 +51,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Nom"
+                android:textColor="#000"
                 android:textAlignment="viewStart"
                 android:textSize="18sp" />
 
@@ -72,11 +71,12 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:orientation="vertical">
 
                 <LinearLayout
-                    android:layout_width="288dp"
+                    android:layout_width="match_parent"
                     android:layout_height="89dp"
+                    android:layout_weight="1"
                     android:orientation="vertical">
 
                     <TextView
@@ -84,10 +84,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Lieu"
+                        android:textColor="#000"
                         android:textSize="18sp" />
 
                     <EditText
-                        android:layout_width="277dp"
+                        android:layout_width="match_parent"
                         android:layout_height="40dp"
                         android:layout_marginTop="10dp"
                         android:background="@drawable/radius"
@@ -97,8 +98,9 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="253dp"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_weight="3"
                     android:orientation="vertical">
 
                     <TextView
@@ -106,6 +108,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Catégorie"
+                        android:textColor="#000"
                         android:textSize="18sp" />
 
                     <Space
@@ -138,6 +141,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Date début"
+                        android:textColor="#000"
                         android:textSize="18sp" />
 
                     <EditText
@@ -158,6 +162,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Heure"
+                        android:textColor="#000"
                         android:textSize="18sp" />
 
                     <EditText
@@ -184,6 +189,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Date fin"
+                        android:textColor="#000"
                         android:textSize="18sp" />
 
                     <EditText
@@ -204,7 +210,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Heure"
-                        android:textSize="18sp" />
+                        android:textSize="18sp"
+                        android:textColor="#000"/>
 
                     <EditText
                         android:id="@+id/heure_finish"
@@ -223,12 +230,14 @@
                 android:id="@+id/textView14"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="#000"
                 android:text="Description"
                 android:textSize="18sp" />
 
             <EditText
                 android:id="@+id/description"
                 android:layout_width="match_parent"
+                android:inputType="textMultiLine"
                 android:layout_height="119dp"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/radius"
@@ -243,28 +252,40 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Image : "
-                    android:textSize="18sp" />
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+                     <Button
+                        android:id="@+id/button_choose_image"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Choisir une image"
+                        android:layout_gravity="center_vertical"
+                        android:textColor="#fff"
+                        android:background="#f1c40f"/>
+                    <Button
+                            android:id="@+id/button_remove_image"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="retirer l'image"
+                            android:layout_gravity="center_vertical"
+                            android:textColor="#fff"
+                            android:background="#e74c3c"
+                            android:visibility="gone"/>
 
-                <Button
-                    android:id="@+id/button_choose_image"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Choisir l'image" />
+                </LinearLayout>
 
-                <TextView
-                    android:id="@+id/textView7"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Aucune image choisit " />
+                <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp"
+                        android:id="@+id/selectedImage"
+                        android:layout_marginTop="10dp"
+                        android:visibility="gone"/>
             </LinearLayout>
 
             <Space
@@ -277,24 +298,26 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Amis"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:textColor="#000"/>
 
             <Space
                 android:layout_width="match_parent"
                 android:layout_height="8dp" />
 
-            <EditText
-                android:id="@+id/nom_recherche_ami"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:text="Recherche un ami" />
+            <AutoCompleteTextView
+                    android:id="@+id/autoCompleteTextView1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="100"
+                    android:hint="chercher une personne" />
+
 
             <ListView
                 android:id="@+id/liste_affichage_amis"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="200dp"
+                android:nestedScrollingEnabled="true"/>
 
             <Space
                 style="8dp"
@@ -302,14 +325,6 @@
                 android:layout_height="11dp" />
 
 
-            <ListView
-                android:id="@+id/liste_amis"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="14dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -321,7 +336,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:backgroundTint="@color/colorPrimaryDark"
+                    android:backgroundTint="#F0363C"
+                    android:textColor="#fff"
                     android:text="Annuler" />
 
                 <Button
@@ -330,7 +346,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:backgroundTint="@color/colorPrimary"
-                    android:text="Valider" />
+                    android:text="Valider"
+                    android:textColor="#fff"/>
             </LinearLayout>
 
         </LinearLayout>

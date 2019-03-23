@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:paddingTop="20dp"
+              android:paddingBottom="20dp">
+
+
+
+    <TextView android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:text="Privilèges Edward Snowden "
+              android:textSize="18sp"
+              android:id="@+id/nom_privilege_dialog"
+              android:textColor="#000"
+              android:layout_marginTop="15dp"
+              android:layout_marginLeft="10dp"/>
+
+        <CheckBox
+                android:text="Modifier l’événement"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/edit_privilege_dialog"
+                 android:textColor="#000"
+                 android:layout_marginLeft="20dp"
+                 android:layout_marginTop="15dp"/>
+
+    <CheckBox
+            android:text="Inviter personnes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/invite_privilege_dialog"
+            android:textColor="#000"
+            android:layout_marginLeft="20dp"/>
+
+    <CheckBox
+            android:text="Retirer personnes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/remove_privilege_dialog"
+            android:textColor="#000"
+            android:layout_marginLeft="20dp"/>
+
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="20dp">
+
+        <Button
+                android:id="@+id/button_cancel_privilege"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#F0363C"
+                android:textColor="#fff"
+                android:text="Annuler"
+        />
+
+        <Button
+                android:id="@+id/button_valider_privilege"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/colorPrimary"
+                android:text="Valider"
+                android:textColor="#fff"/>
+    </LinearLayout>
+
+
+</LinearLayout>

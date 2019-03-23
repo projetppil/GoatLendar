@@ -1,11 +1,15 @@
 package com.example.dell.goatlendar.Adapter;
 
 import android.content.Context;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+import com.example.dell.goatlendar.Controleur.ControleurEvenement;
 import com.example.dell.goatlendar.R;
 import com.example.dell.goatlendar.evenement.Evenement;
 
@@ -22,7 +26,7 @@ public class AdapterListEvent extends ArrayAdapter<Evenement> {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(int position, View convertView, final ViewGroup parent) {
         LayoutInflater inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
@@ -34,6 +38,18 @@ public class AdapterListEvent extends ArrayAdapter<Evenement> {
         nom.setText(values.get(position).getNom());
         proprietaire.setText("karim");
         heur.setText(values.get(position).getHeur());
+
+        rowView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                final FragmentTransaction ft = ((AppCompatActivity)getContext()).getSupportFragmentManager().beginTransaction();
+                ft.replace(R.id.main, new ControleurEvenement(), "NewFragmentTag");
+                ft.addToBackStack(null);
+                ft.commit();
+
+            }
+        });
 
         return rowView;
     }

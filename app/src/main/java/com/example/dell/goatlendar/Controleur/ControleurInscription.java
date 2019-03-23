@@ -27,6 +27,7 @@ public class ControleurInscription extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.inscription);
+        System.out.close();
         //showMenu();
 
        // progressDialog = new ProgressBar(this);
