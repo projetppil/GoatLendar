@@ -29,11 +29,12 @@
 
     <EditText android:layout_width="match_parent"
               android:layout_height="40dp"
+              android:id="@+id/email_connexion"
               android:background="@drawable/radius"
               android:layout_marginTop="10dp"
               android:hint="Votre email"
               android:paddingLeft="10dp"
-              android:id="@id/Email"/>
+              />
 
     <TextView
             android:text="Mot de passe"
@@ -47,7 +48,7 @@
 
     <EditText android:layout_width="match_parent"
               android:layout_height="40dp"
-              android:id="@+id/password"
+              android:id="@+id/password_connexion"
               android:background="@drawable/radius"
               android:layout_marginTop="10dp"
               android:inputType="textPassword"
@@ -72,7 +73,6 @@
             android:textSize="18dp"
             android:textColor="#FFF"
             android:layout_marginLeft="5dp"
-            android:onClick="mdp_oubler"
             />
     </LinearLayout>
 
@@ -87,7 +87,8 @@
     <TextView
             android:text="Vous n'avez pas de compte ?"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" android:id="@+id/Email"
+            android:layout_height="wrap_content"
+            android:id="@+id/Email"
             android:textSize="16dp"
             android:textColor="#fff"
             android:layout_marginTop="10dp"

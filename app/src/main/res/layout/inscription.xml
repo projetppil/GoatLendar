@@ -36,6 +36,7 @@
               android:layout_height="40dp"
               android:background="@drawable/radius"
               android:layout_marginTop="10dp"
+              android:id="@+id/nom_inscription"
               android:hint="Votre nom"
               android:paddingLeft="10dp"/>
 
@@ -52,6 +53,7 @@
               android:background="@drawable/radius"
               android:layout_marginTop="10dp"
               android:hint="Votre prénom"
+              android:id="@+id/prenom_inscription"
               android:paddingLeft="10dp"/>
 
     <TextView
@@ -66,6 +68,7 @@
               android:layout_height="40dp"
               android:background="@drawable/radius"
               android:layout_marginTop="10dp"
+              android:id="@+id/email_inscription"
               android:hint="Votre email"
               android:paddingLeft="10dp"/>
 
@@ -81,6 +84,7 @@
     <EditText android:layout_width="match_parent"
               android:layout_height="40dp"
               android:background="@drawable/radius"
+              android:id="@+id/mdp_inscription"
               android:layout_marginTop="10dp"
               android:hint="choisissez un mot de passe"
               android:paddingLeft="10dp"/>
@@ -97,6 +101,7 @@
               android:layout_height="40dp"
               android:background="@drawable/radius"
               android:layout_marginTop="10dp"
+              android:id="@+id/mdp_confirm_inscription"
               android:hint="Retapez votre mot de passe"
               android:paddingLeft="10dp"/>
 
@@ -107,6 +112,7 @@
             android:textColor="@color/connexion"
             android:backgroundTint="#FFDD32"
             android:background="@drawable/radius"
+            android:id="@+id/lancerInscription"
     />
 
 
