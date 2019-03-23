@@ -23,6 +23,15 @@ public class Evenement {
         this.gestionnaireMembre = new GestionnaireMembre();
     }
 
+    public String getNom() {
+        return nom;
+    }
+
+    public String getHeur(){
+        return String.valueOf(dateDebut.getTime());
+    }
+
+
     public Evenement(int type, Color couleur, String nom, Timestamp dateFin, Timestamp dateDebut) {
         this.chat = new Chat();
         this.gestionnaireMembre = new GestionnaireMembre();
