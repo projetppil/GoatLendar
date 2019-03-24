@@ -19,13 +19,23 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
+import com.android.volley.*;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.dell.goatlendar.Adapter.AdapterAutocompeteCreateEvent;
 import com.example.dell.goatlendar.Adapter.AdapterListEvent;
 import com.example.dell.goatlendar.Adapter.AdapterListeInvite;
 import com.example.dell.goatlendar.R;
 import com.example.dell.goatlendar.evenement.Evenement;
+import com.example.dell.goatlendar.url.Constants;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ControleurAccueil extends Fragment  {
      //la liste des invite lors de la creation d'un nouveau evenement
@@ -34,8 +44,11 @@ public class ControleurAccueil extends Fragment  {
     private View promptView;
      Button image_chooser , image_remove;
 
+    //affichage des evenement dans la page d'accueil
+    public ArrayList<Evenement> evenements = new ArrayList<>();
 
-
+    //
+    private ListView listView ;
 
     @Nullable
     @Override
@@ -166,27 +179,30 @@ public class ControleurAccueil extends Fragment  {
         });
 
 
-        //affichage des evenement dans la page d'accueil
-        ArrayList<Evenement> evenements = new ArrayList<>();
-
-        evenements.add(new Evenement(1, new Color(), "Anniversaire 1",  new Timestamp(System.currentTimeMillis()),  new Timestamp(System.currentTimeMillis())));
-        evenements.add(new Evenement(2, new Color(), "Anniversaire 2",  new Timestamp(System.currentTimeMillis()),  new Timestamp(System.currentTimeMillis())));
-        evenements.add(new Evenement(3, new Color(), "Anniversaire 3",  new Timestamp(System.currentTimeMillis()),  new Timestamp(System.currentTimeMillis())));
-        evenements.add(new Evenement(4, new Color(), "Anniversaire 4",  new Timestamp(System.currentTimeMillis()),  new Timestamp(System.currentTimeMillis())));
-
-        ListView listView = (ListView)view.findViewById(R.id.listeEvent);
-
-
-        AdapterListEvent adapterListEvent = new AdapterListEvent(getActivity() , evenements);
-        listView.setAdapter(adapterListEvent);
-
+        //*************************
+        listView = (ListView)view.findViewById(R.id.listeEvent);
+        //*************************
 
         CalendarView calendarView = (CalendarView)view.findViewById(R.id.calendar);
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener(){
             public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
                 //appel a une fonction qui prend en entree une date et retourne arrayliste<Evenement> contenant la liste des evenement
                 Toast.makeText(view.getContext(), "Year=" + year + " Month=" + month + " Day=" + dayOfMonth, Toast.LENGTH_LONG).show();
+                String m ;
+                String d ;
 
+                if (month+1<10)
+                    m="0"+String.valueOf(month+1);
+                else
+                    m=String.valueOf(month+1);
+
+                if (dayOfMonth<10)
+                    d="0"+String.valueOf(dayOfMonth);
+                else
+                    d=String.valueOf(dayOfMonth);
+
+                String date = String.valueOf(year) + "-" + m + "-" + d;
+                recupererTouslesEvenements(date);
             }
 
         });
@@ -224,5 +240,99 @@ public class ControleurAccueil extends Fragment  {
 
     }
 
+    private void recupererTouslesEvenements(String d){
+
+        final String  date = d;
+
+        System.out.println(d);
+        //progressbar
+        StringRequest stringRequest=new StringRequest(Request.Method.POST, Constants.URL_GetAllEvenements, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                //Récupération de la réponse JSON
+                try {
+
+                    JSONObject jsonObject= new JSONObject(response);
+
+                    if (jsonObject.getBoolean("error")){
+                        //erreur de retour
+                        Toast.makeText(getActivity(),"Pas d'evenements disponibles", Toast.LENGTH_SHORT).show();
+                    }else{
+
+                        int nbEvenetsRecuperer =jsonObject.length()-2;
+                        JSONObject jsonObject2;
+                        for (int i = 0; i < nbEvenetsRecuperer ; i++){
+                            jsonObject2 = new JSONObject(jsonObject.getString(String.valueOf(i)));
+
+                            int TypeEvent = Integer.valueOf(jsonObject2.getString("Type_eve"));
+                            String nomEvent = jsonObject2.getString("Nom_eve");
+
+                            evenements.add(new Evenement(TypeEvent, new Color(), nomEvent,
+                                    new Timestamp(System.currentTimeMillis()),  new Timestamp(System.currentTimeMillis())));
+
+                        }
+                        AdapterListEvent adapterListEvent = new AdapterListEvent(getActivity() , evenements);
+                        listView.setAdapter(adapterListEvent);
+                    }
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+
+                Map<String,String> params=new HashMap<>();
+                params.put("date",date);
+                return params;
+            }
+        };
+        //not sure
+        RequestQueue requestQueue= Volley.newRequestQueue(getActivity().getApplicationContext());
+
+        requestQueue.add(stringRequest);
+    }
+
+
+    private void afficherUnEvenement(int idEvent){
+        final String  id = String.valueOf(idEvent);
+
+        //progressbar
+        StringRequest stringRequest=new StringRequest(Request.Method.POST, Constants.URL_GetEvenement, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                //Récupération de la réponse JSON
+                try {
+                    JSONObject jsonObject=new JSONObject(response);
+                    //remplire les evenements
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+
+                Map<String,String> params=new HashMap<>();
+                params.put("date",id);
+                return params;
+            }
+        };
+        //not sure
+        RequestQueue requestQueue= Volley.newRequestQueue(getActivity().getApplicationContext());
+
+        requestQueue.add(stringRequest);
+    }
 
 }

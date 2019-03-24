@@ -1,6 +1,7 @@
 package com.example.dell.goatlendar.Controleur;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -22,16 +23,16 @@ import java.util.Map;
 public class ControleurInscription extends AppCompatActivity {
 
     private ProgressBar progressDialog;
+    protected Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.inscription);
-        System.out.close();
-        //showMenu();
+
+        intent = new Intent(this , ControleurLogin.class);
 
        // progressDialog = new ProgressBar(this);
-
         Button b = findViewById(R.id.lancerInscription);
         b.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -101,7 +102,12 @@ public class ControleurInscription extends AppCompatActivity {
                 //Récupération de la réponse JSON
                 try {
                     JSONObject jsonObject=new JSONObject(response);
-                    Toast.makeText(getApplicationContext(),jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
+                    if (jsonObject.getBoolean("error")){
+                        Toast.makeText(getApplicationContext(),jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
+                    }else
+                    {
+                        startActivity(intent);
+                    }
 
                 } catch (JSONException e) {
                     e.printStackTrace();

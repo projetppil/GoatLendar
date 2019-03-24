@@ -10,8 +10,10 @@ import android.widget.Toast;
 import com.android.volley.*;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.dell.goatlendar.Application;
 import com.example.dell.goatlendar.R;
 import com.example.dell.goatlendar.url.Constants;
+import com.example.dell.goatlendar.user.CompteUtilisateur;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -79,9 +81,14 @@ public class ControleurLogin extends AppCompatActivity {
                 try {
                     JSONObject jsonObject=new JSONObject(response);
                     if (jsonObject.getBoolean("error")) {
-                        res = 1;
                         Toast.makeText(getApplicationContext(),jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
                     }else{
+                        CompteUtilisateur compteUtilisateur = new CompteUtilisateur(
+                                jsonObject.getString("NomUser"),
+                                jsonObject.getString("PrenomUser") ,
+                                jsonObject.getString("Mail") ,
+                                jsonObject.getString("ImageUser"));
+                       // Application.getInstance().
                         startActivity(intent);
                     }
 

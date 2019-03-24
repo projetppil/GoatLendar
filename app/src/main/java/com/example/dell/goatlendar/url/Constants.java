@@ -7,4 +7,8 @@ public class Constants {
     public static final String URL_Inscript=ROOT_URL+"enregistrerUtilisateur.php";
     //URL de la requete get Id Utilisateur
     public static final String URL_Connexion=ROOT_URL+"getIdUtilisateur.php";
+    //URL de la requete get tous les evenements
+    public static final String URL_GetAllEvenements=ROOT_URL+"getAllEvenements.php";
+    //URL de la requete get evenement
+    public static final String URL_GetEvenement=ROOT_URL+"getEvenement.php";
 }
