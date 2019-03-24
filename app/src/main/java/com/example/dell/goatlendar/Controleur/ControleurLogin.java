@@ -84,11 +84,11 @@ public class ControleurLogin extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(),jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
                     }else{
                         CompteUtilisateur compteUtilisateur = new CompteUtilisateur(
-                                jsonObject.getString("NomUser"),
+                                Integer.valueOf(jsonObject.getString("IdUser")),
                                 jsonObject.getString("PrenomUser") ,
                                 jsonObject.getString("Mail") ,
                                 jsonObject.getString("ImageUser"));
-                       // Application.getInstance().
+                        //Application.getInstance().
                         startActivity(intent);
                     }
 
