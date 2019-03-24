@@ -6,18 +6,18 @@ import com.example.dell.goatlendar.evenement.Evenement;
 import java.util.ArrayList;
 
 public class CompteUtilisateur {
+    private int id;
     private String nom;
     private String prenom;
     private String email;
-    private String image;
     private ArrayList<SousCalendrier> sousCalendriers;
 
 
-    public CompteUtilisateur(String nom, String prenom, String email, String image) {
+    public CompteUtilisateur(int id , String nom, String prenom, String email) {
+        this.id = id;
         this.nom = nom;
         this.prenom = prenom;
         this.email = email;
-        this.image = image;
     }
 
     public CompteUtilisateur() {
@@ -55,9 +55,6 @@ public class CompteUtilisateur {
         return email;
     }
 
-    public String getImage() {
-        return image;
-    }
 
     public ArrayList<SousCalendrier> getSousCalendriers() {
         return sousCalendriers;
@@ -75,7 +72,4 @@ public class CompteUtilisateur {
         this.email = email;
     }
 
-    public void setImage(String image) {
-        this.image = image;
-    }
 }

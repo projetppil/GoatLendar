@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="horizontal"
+              android:paddingLeft="10dp"
+              android:paddingRight="10dp">
+
+
+    <ImageView
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            app:srcCompat="@drawable/user"
+            android:id="@+id/imageView3"
+            android:layout_marginTop="10dp"/>
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+        <TextView
+                android:text="Edward Snowden"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/nom_proprietaire"
+                android:textSize="15sp"
+                android:layout_marginTop="20dp"
+                android:layout_gravity="center_vertical"
+                android:textStyle="bold"
+                android:textColor="#000"/>
+    </LinearLayout>
+
+
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:layout_gravity="center">
+
+        <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                app:srcCompat="@drawable/ic_mode_edit_black_24dp"
+                android:id="@+id/edit_event"
+                android:layout_marginTop="10dp"/>
+
+        <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                app:srcCompat="@drawable/ic_delete_black_24dp"
+                android:id="@+id/editInvite"
+                android:layout_marginTop="10dp"/>
+
+        <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                app:srcCompat="@drawable/ic_group_black_24dp"
+                android:id="@+id/invites_icon"
+                android:layout_marginTop="10dp"/>
+
+    </LinearLayout>
+
+</LinearLayout>
