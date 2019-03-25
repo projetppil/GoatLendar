@@ -62,7 +62,7 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 app:srcCompat="@drawable/notif_icon"
-                android:id="@+id/editInvite"
+                android:id="@+id/notifinvit"
                 android:layout_marginTop="10dp"/>
 
         <ImageView

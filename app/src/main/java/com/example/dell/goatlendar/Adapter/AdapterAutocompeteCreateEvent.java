@@ -5,8 +5,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.TextView;
 import com.example.dell.goatlendar.Notification.Notification;
 import com.example.dell.goatlendar.R;
+import com.example.dell.goatlendar.user.CompteUtilisateur;
 
 import java.util.ArrayList;
 
@@ -30,6 +32,8 @@ public class AdapterAutocompeteCreateEvent extends ArrayAdapter<String> {
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
         View rowView = inflater.inflate(R.layout.item_user, parent, false);
+        TextView name = (TextView)rowView.findViewById(R.id.nom_user_item);
+        name.setText(values.get(position));
 
         return rowView;
     }

@@ -3,16 +3,17 @@
               xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:orientation="horizontal"
-              android:paddingLeft="10dp"
-              android:paddingRight="10dp">
+              android:padding="10dp"
+              android:background="#fafafa">
 
 
     <ImageView
             android:layout_width="50dp"
             android:layout_height="50dp"
-            app:srcCompat="@drawable/user"
+            app:srcCompat="@drawable/ic_group_black_24dp"
             android:id="@+id/imageView3"
-            android:layout_marginTop="10dp"/>
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center_vertical"/>
     <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
@@ -21,43 +22,27 @@
             android:paddingLeft="5dp"
             android:paddingRight="5dp">
         <TextView
-                android:text="Edward Snowden"
+                android:text="Anniversaire"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/nom_invite"
-                android:textSize="14sp"
+                android:id="@+id/nom_groupe"
+                android:textSize="18dp"
                 android:layout_marginTop="20dp"
                 android:textStyle="bold"
                 android:textColor="#000"/>
         <TextView
-                android:text=""
-                android:layout_width="match_parent"
+                android:text="Paul"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="14sp"
                 android:id="@+id/proprietaire_event"/>
     </LinearLayout>
 
-
-    <LinearLayout
-            android:orientation="horizontal"
+    <ImageView
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:gravity="center_horizontal">
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_more_vert_black_24dp"
+            android:id="@+id/option_groupe"
+            android:layout_gravity="center_vertical"/>
 
-        <ImageView
-                android:layout_width="30dp"
-                android:layout_height="wrap_content"
-                app:srcCompat="@drawable/ic_mode_edit_black_24dp"
-                android:id="@+id/editInvite"
-                android:layout_marginTop="10dp"/>
-
-        <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                app:srcCompat="@drawable/ic_delete_black_24dp"
-                android:id="@+id/Privileges_Invite"
-                android:layout_marginTop="10dp"/>
-
-    </LinearLayout>
 
 </LinearLayout>

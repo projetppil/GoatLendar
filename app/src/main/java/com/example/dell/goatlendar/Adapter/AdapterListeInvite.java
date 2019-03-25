@@ -7,31 +7,31 @@ import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.ImageView;
+import android.widget.*;
 import com.example.dell.goatlendar.Notification.Notification;
 import com.example.dell.goatlendar.R;
+import com.example.dell.goatlendar.user.CompteUtilisateur;
 
 import java.util.ArrayList;
 
-public class AdapterListeInvite extends ArrayAdapter<String> {
+public class AdapterListeInvite extends ArrayAdapter<CompteUtilisateur> {
     private final Context context;
-    private final ArrayList<String> values;
+    private final ArrayList<CompteUtilisateur> values;
 
-    public AdapterListeInvite(Context context, ArrayList<String> values) {
+    public AdapterListeInvite(Context context, ArrayList<CompteUtilisateur> values) {
         super(context, -1, values);
         this.context = context;
         this.values = values;
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         final LayoutInflater inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-        View rowView = inflater.inflate(R.layout.item_invite, parent, false);
+        final View rowView = inflater.inflate(R.layout.item_invite, parent, false);
+        TextView nom = (TextView)rowView.findViewById(R.id.nom_invite);
+        nom.setText(values.get(position).getNom() + " " +values.get(position).getPrenom());
 
         ImageView editPrivilege = (ImageView)rowView.findViewById(R.id.editInvite);
 
@@ -39,6 +39,9 @@ public class AdapterListeInvite extends ArrayAdapter<String> {
             @Override
             public void onClick(View view) {
                 LayoutInflater layoutInflater = LayoutInflater.from(getContext());
+
+
+
                 final View promptView = layoutInflater.inflate(R.layout.privilege_invite, null);
                 final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getContext());
                 alertDialogBuilder.setView(promptView);

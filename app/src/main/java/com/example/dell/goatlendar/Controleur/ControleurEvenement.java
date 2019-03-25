@@ -4,11 +4,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import com.example.dell.goatlendar.Adapter.AdapterListCommentaire;
 import com.example.dell.goatlendar.Adapter.AdapterListEvent;
@@ -34,6 +36,17 @@ public class ControleurEvenement extends Fragment {
         listView.setAdapter(adapterListComment);
 
 
+        ImageView icon_liste_invite = (ImageView)view.findViewById(R.id.invites_icon);
+        icon_liste_invite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final FragmentTransaction ft = ((AppCompatActivity)getContext()).getSupportFragmentManager().beginTransaction();
+                ft.replace(R.id.main, new ControleurListInvites(), "invited");
+                ft.addToBackStack(null);
+                ft.commit();
+
+            }
+        });
 
 
 

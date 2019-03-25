@@ -27,6 +27,8 @@ import com.example.dell.goatlendar.Adapter.AdapterListEvent;
 import com.example.dell.goatlendar.Adapter.AdapterListeInvite;
 import com.example.dell.goatlendar.R;
 import com.example.dell.goatlendar.evenement.Evenement;
+import com.example.dell.goatlendar.user.CompteUtilisateur;
+
 import com.example.dell.goatlendar.url.Constants;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -115,19 +117,27 @@ public class ControleurAccueil extends Fragment  {
                 });
 
 
+                /**
+                 * recuperer unr arraylist<CompteUtilisateur> qui va contenir toutes les utilisateur de l'application
+                 * dans mon cas je vais la remplir mannuellement apres changer la  avec les bonnes information
+                 */
+                final ArrayList<CompteUtilisateur> users = new ArrayList<>();
+                users.add(new CompteUtilisateur(1 , "Abdi" , "Karim" , "karim213@gmail.com"));
+                users.add(new CompteUtilisateur(2 , "Salhi" , "Mohamed El reda" , "reda213@gmail.com"));
+                users.add(new CompteUtilisateur(3 , "El kefif" , "Mohamed Mehdi" , "mehdi213@gmail.com"));
+
+                final ArrayList<String> users_names = new ArrayList<>();
+                for (int i=0 ; i<users.size() ; i++)
+                    users_names.add(users.get(i).getNom() + " "+ users.get(i).getPrenom());
+
                 //remplissage manuellle des utilisateur
-                ArrayList<String> personnes = new ArrayList<>();
-                personnes.add("Karim");
-                personnes.add("Kamel");
-                personnes.add("Mohamed");
-                personnes.add("Pierre");
-                personnes.add("Emilien");
-                personnes.add("Julien");
+                final ArrayList<CompteUtilisateur> personnes = new ArrayList<>();
 
                 //permet de stcker les memebre selectionner :  le type a descuter, il faut une class qui stock les information des inviter a la place de string
-                final ArrayList<String> values = new ArrayList<>();
+                final ArrayList<CompteUtilisateur> values = new ArrayList<>();
+
                 //gestion de l'autocomplete : rechercher une personne
-                AdapterAutocompeteCreateEvent adapter = new AdapterAutocompeteCreateEvent(getContext(),personnes);
+                AdapterAutocompeteCreateEvent adapter = new AdapterAutocompeteCreateEvent(getContext(),users_names);
                 final AutoCompleteTextView textView = (AutoCompleteTextView) promptView.findViewById(R.id.autoCompleteTextView1);
                 textView.setAdapter(adapter);
 
@@ -143,7 +153,7 @@ public class ControleurAccueil extends Fragment  {
                     @Override
                     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                         System.out.println(adapterView.getAdapter().getItem(i));
-                        values.add(adapterView.getAdapter().getItem(i).toString());
+                        values.add(users.get(i));
                         adapter2.notifyDataSetChanged();
 
                     }
@@ -251,7 +261,7 @@ public class ControleurAccueil extends Fragment  {
             public void onResponse(String response) {
                 //Récupération de la réponse JSON
                 try {
-
+                    evenements.clear();
                     JSONObject jsonObject= new JSONObject(response);
 
                     if (jsonObject.getBoolean("error")){

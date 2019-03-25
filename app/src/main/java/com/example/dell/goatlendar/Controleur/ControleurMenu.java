@@ -59,7 +59,10 @@ public class ControleurMenu extends AppCompatActivity {
                         //ajouter l'action d'ouverture d'activity calendrier Évènements
                         return false;
                     case R.id.amis:
-                        //ajouter l'action d'ouverture d'activity amis
+                        ControleurListeGroupe groupes = new ControleurListeGroupe();
+                        toolbar.setTitle("Mes Amis");
+                        fg.beginTransaction().replace(R.id.main, groupes).addToBackStack("back").commit();
+
                         return true;
                     case R.id.clendrierPropretaire:
                         //ajouter l'action d'ouverture d'activity Mes Évènements
