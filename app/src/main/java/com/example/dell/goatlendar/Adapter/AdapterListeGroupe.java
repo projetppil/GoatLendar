@@ -77,10 +77,11 @@ public class AdapterListeGroupe extends ArrayAdapter<Groupe> {
                  @Override
                  public void onClick(View view) {
                      final FragmentTransaction ft = ((AppCompatActivity)getContext()).getSupportFragmentManager().beginTransaction();
-                     //Bundle data = new Bundle();
-                     //data.put("idGroupe" , values.get(position).getClass());
+                     Bundle data = new Bundle();
+                     data.putInt("idGroupe" , values.get(position).getId());
+                     data.putString("nomGroupe" , values.get(position).getNom());
                      ControleurListeMembreGroupe fragment = new ControleurListeMembreGroupe();
-                     //fragment.setArguments(data);
+                     fragment.setArguments(data);
                      ft.replace(R.id.main, fragment, "NewFragmentTag");
                      ft.addToBackStack(null);
                      ft.commit();
@@ -89,5 +90,6 @@ public class AdapterListeGroupe extends ArrayAdapter<Groupe> {
 
                 return rowView;
         }
+
 
 }

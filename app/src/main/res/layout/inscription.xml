@@ -38,6 +38,7 @@
               android:layout_marginTop="10dp"
               android:id="@+id/nom_inscription"
               android:hint="Votre nom"
+              android:inputType="textPersonName"
               android:paddingLeft="10dp"/>
 
     <TextView
@@ -54,6 +55,7 @@
               android:layout_marginTop="10dp"
               android:hint="Votre prénom"
               android:id="@+id/prenom_inscription"
+              android:inputType="textPersonName"
               android:paddingLeft="10dp"/>
 
     <TextView
@@ -69,6 +71,7 @@
               android:background="@drawable/radius"
               android:layout_marginTop="10dp"
               android:id="@+id/email_inscription"
+              android:inputType="textEmailAddress"
               android:hint="Votre email"
               android:paddingLeft="10dp"/>
 
@@ -86,6 +89,7 @@
               android:background="@drawable/radius"
               android:id="@+id/mdp_inscription"
               android:layout_marginTop="10dp"
+              android:inputType="textPassword"
               android:hint="choisissez un mot de passe"
               android:paddingLeft="10dp"/>
 
@@ -103,6 +107,7 @@
               android:layout_marginTop="10dp"
               android:id="@+id/mdp_confirm_inscription"
               android:hint="Retapez votre mot de passe"
+              android:inputType="textPassword"
               android:paddingLeft="10dp"/>
 
     <Button android:layout_width="match_parent"

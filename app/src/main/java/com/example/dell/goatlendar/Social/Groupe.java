@@ -17,9 +17,13 @@ public class Groupe extends GestionnaireAmis {
      * @param nom Nom du groupe
      * @param listeAmi Liste des amis qui compose le groupe au départ
      */
-   public Groupe(String nom,ArrayList<CompteUtilisateur> listeAmi){
+   public Groupe(int id , String nom){
         this.nom = nom;
-        this.listeAmi = listeAmi;
+        this.id = id;
+    }
+
+    public int getId() {
+        return id;
     }
 
     /**
@@ -29,6 +33,10 @@ public class Groupe extends GestionnaireAmis {
         return nom;
     }
     public ArrayList<CompteUtilisateur> getListeAmi(){
+        listeAmi = new ArrayList<>();
+        listeAmi.add(new CompteUtilisateur(1 , "Abdi" , "Karim" , "karim213@gmail.com"));
+        listeAmi.add(new CompteUtilisateur(2 , "El kefif" , "Mohamed Mehdi" , "mehdi213@gmail.com"));
+        listeAmi.add(new CompteUtilisateur(3 , "Salhi" , "Mohamed El Reda" , "salhi213@gmail.com"));
         return listeAmi;
     }
 

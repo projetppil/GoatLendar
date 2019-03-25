@@ -40,11 +40,11 @@ public class ControleurListeMembreGroupe extends Fragment {
     public View onCreateView(LayoutInflater inflater , ViewGroup container , Bundle savedInstanceState){
         View view = inflater.inflate(R.layout.liste_membre_groupe , container , false);
 
-        Bundle arguments = getArguments();
-        membre_groupe = (ArrayList<CompteUtilisateur>) arguments.get("Groupe");
+        Groupe groupe = new Groupe(getArguments().getInt("idGroupe") , getArguments().getString("nomGroupe"));
+        membre_groupe = groupe.getListeAmi();
+
         for(CompteUtilisateur user : membre_groupe)
             users_name.add(user.getNom() + " " + user.getPrenom());
-
 
         FloatingActionButton button = (FloatingActionButton)view.findViewById(R.id.fabAddInvite);
         button.setOnClickListener(new View.OnClickListener() {

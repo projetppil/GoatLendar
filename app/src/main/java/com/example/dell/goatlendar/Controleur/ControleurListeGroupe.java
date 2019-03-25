@@ -25,11 +25,11 @@ public class ControleurListeGroupe extends Fragment {
 
         ListView liste_groupe = (ListView)view.findViewById((R.id.liste__groupes));
         ArrayList<Groupe> groupes = new ArrayList<>();
-        groupes.add(new Groupe("Groupe 1" , new ArrayList<CompteUtilisateur>()));
-        groupes.add(new Groupe("Groupe 2" , new ArrayList<CompteUtilisateur>()));
-        groupes.add(new Groupe("Groupe 3" , new ArrayList<CompteUtilisateur>()));
-        groupes.add(new Groupe("Groupe 4" , new ArrayList<CompteUtilisateur>()));
-        groupes.add(new Groupe("Groupe 5" , new ArrayList<CompteUtilisateur>()));
+        groupes.add(new Groupe(1 ,"Groupe 1" ));
+        groupes.add(new Groupe(2 ,"Groupe 2" ));
+        groupes.add(new Groupe(3 , "Groupe 3") );
+        groupes.add(new Groupe(4 , "Groupe 4" ));
+        groupes.add(new Groupe(5 , "Groupe 5" ));
 
         AdapterListeGroupe adapterListeGroupe = new AdapterListeGroupe(getContext() , groupes);
         liste_groupe.setAdapter(adapterListeGroupe);

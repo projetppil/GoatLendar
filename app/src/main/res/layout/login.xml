@@ -32,6 +32,7 @@
               android:id="@+id/email_connexion"
               android:background="@drawable/radius"
               android:layout_marginTop="10dp"
+              android:inputType="textEmailAddress"
               android:hint="Votre email"
               android:paddingLeft="10dp"
               />
