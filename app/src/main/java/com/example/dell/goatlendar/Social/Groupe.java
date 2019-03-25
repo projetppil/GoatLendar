@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 public class Groupe extends GestionnaireAmis {
 
+    int id;
     // Nom du groupe
     private String nom;
     // Liste d'amis qui compose le groupe

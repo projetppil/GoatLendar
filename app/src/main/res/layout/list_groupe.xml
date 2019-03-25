@@ -55,14 +55,15 @@
     </LinearLayout>
 
     <android.support.design.widget.FloatingActionButton
-            android:id="@+id/fabAddInvite"
+            android:id="@+id/fabcreategroupe"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_gravity="right|bottom"
             android:layout_marginRight="16dp"
             android:scaleType="center"
             android:backgroundTint="#fff"
-            android:src="@drawable/fab"/>
+            android:src="@drawable/fab"
+    />
 </FrameLayout>
 
 </LinearLayout>

@@ -34,7 +34,7 @@
                 android:text="Paul"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/proprietaire_event"/>
+                android:id="@+id/nombre_membre_groupe"/>
     </LinearLayout>
 
     <ImageView

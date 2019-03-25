@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical"
+              android:background="#fff"
+              android:padding="20dp">
+
+
+<LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal">
+
+    <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ajouter "
+            android:textColor="@color/colorPrimary"
+            android:textSize="28sp"/>
+
+    <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000"
+            android:text="Membres"
+            android:textAlignment="viewStart"
+            android:textSize="28sp"/>
+
+</LinearLayout>
+
+    <Space
+            android:layout_width="match_parent"
+            android:layout_height="8dp" />
+
+    <AutoCompleteTextView
+            android:id="@+id/autoCompleteAddUsersGroupe"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="100"
+            android:hint="chercher une personne" />
+
+
+    <ListView android:layout_width="match_parent"
+              android:layout_height="308dp">
+    </ListView>
+
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
+
+        <Button
+                android:id="@+id/valider_ajouter_membres_groupe"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:backgroundTint="#F0363C"
+                android:textColor="#fff"
+                android:text="Annuler" />
+
+        <Button
+                android:id="@+id/annuler_ajouter_membres_groupe"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:backgroundTint="@color/colorPrimary"
+                android:text="Valider"
+                android:textColor="#fff"/>
+    </LinearLayout>
+
+
+
+
+</LinearLayout>
