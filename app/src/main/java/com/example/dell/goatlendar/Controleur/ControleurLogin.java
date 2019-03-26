@@ -88,7 +88,7 @@ public class ControleurLogin extends AppCompatActivity {
                                 jsonObject.getString("PrenomUser") ,
                                 jsonObject.getString("Mail") ,
                                 jsonObject.getString("ImageUser"));
-                        //Application.getInstance().
+                        Application.getInstance().setUtilisateurActuel(compteUtilisateur);
                         startActivity(intent);
                     }
 

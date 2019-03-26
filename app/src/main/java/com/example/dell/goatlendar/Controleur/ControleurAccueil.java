@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -25,6 +26,7 @@ import com.android.volley.toolbox.Volley;
 import com.example.dell.goatlendar.Adapter.AdapterAutocompeteCreateEvent;
 import com.example.dell.goatlendar.Adapter.AdapterListEvent;
 import com.example.dell.goatlendar.Adapter.AdapterListeInvite;
+import com.example.dell.goatlendar.Application;
 import com.example.dell.goatlendar.R;
 import com.example.dell.goatlendar.evenement.Evenement;
 import com.example.dell.goatlendar.user.CompteUtilisateur;
@@ -36,6 +38,7 @@ import org.json.JSONObject;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -51,6 +54,8 @@ public class ControleurAccueil extends Fragment  {
 
     //
     private ListView listView ;
+    private TextView textViewNomUser;
+    private TextView textViewEmail;
 
     @Nullable
     @Override
@@ -119,7 +124,7 @@ public class ControleurAccueil extends Fragment  {
 
                 /**
                  * recuperer unr arraylist<CompteUtilisateur> qui va contenir toutes les utilisateur de l'application
-                 * dans mon cas je vais la remplir mannuellement apres changer la  avec les bonnes information
+                 * dans mon cas je vais la remplir mannuellement apres changer la  avec les bonnes informations
                  */
                 final ArrayList<CompteUtilisateur> users = new ArrayList<>();
                 users.add(new CompteUtilisateur(1 , "Abdi" , "Karim" , "karim213@gmail.com"));
@@ -218,6 +223,14 @@ public class ControleurAccueil extends Fragment  {
         });
 
 
+        //Remplir les infos de la barre de la navigation
+        CompteUtilisateur c= Application.getInstance().getUtilisateurActuel();
+        NavigationView  navigationView = getActivity().findViewById(R.id.barre_de_nav);
+        textViewNomUser = navigationView.getHeaderView(0).findViewById(R.id.textNom);
+        textViewEmail = navigationView.getHeaderView(0).findViewById(R.id.textEmail);
+        textViewNomUser.setText(c.getNom());
+        textViewEmail.setText(c.getEmail());
+
 
         return view;
     }
@@ -277,8 +290,9 @@ public class ControleurAccueil extends Fragment  {
                             int TypeEvent = Integer.valueOf(jsonObject2.getString("Type_eve"));
                             String nomEvent = jsonObject2.getString("Nom_eve");
 
+
                             evenements.add(new Evenement(TypeEvent, new Color(), nomEvent,
-                                    new Timestamp(System.currentTimeMillis()),  new Timestamp(System.currentTimeMillis())));
+                                    new Timestamp(System.currentTimeMillis()), date));
 
                         }
                         AdapterListEvent adapterListEvent = new AdapterListEvent(getActivity() , evenements);
