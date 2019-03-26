@@ -30,9 +30,10 @@ public class ControleurInscription extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.inscription);
 
-        intent = new Intent(this , ControleurLogin.class);
+        intent = new Intent(this , ControleurInscriptionSuccess.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
 
-       // progressDialog = new ProgressBar(this);
+        // progressDialog = new ProgressBar(this);
         Button b = findViewById(R.id.lancerInscription);
         b.setOnClickListener(new View.OnClickListener() {
             @Override

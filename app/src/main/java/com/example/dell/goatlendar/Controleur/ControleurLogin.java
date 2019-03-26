@@ -42,6 +42,7 @@ public class ControleurLogin extends AppCompatActivity {
         TextView nom_inscription = findViewById(R.id.email_connexion);
         TextView mdp_inscription= findViewById(R.id.password_connexion);
         intent = new Intent(this , ControleurMenu.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
 
         String pattern2 = "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+.[A-Za-z]{2,6}$";
 

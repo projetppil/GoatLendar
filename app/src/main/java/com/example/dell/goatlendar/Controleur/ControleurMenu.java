@@ -65,7 +65,10 @@ public class ControleurMenu extends AppCompatActivity {
 
                         return true;
                     case R.id.clendrierPropretaire:
-                        //ajouter l'action d'ouverture d'activity Mes Évènements
+                        ControleurSousCalendrier app5 = new ControleurSousCalendrier();
+                        toolbar.setTitle("Mes calendriers");
+                        fg.beginTransaction().replace(R.id.main, app5).commit();
+
                         return true;
                     case R.id.impor:
                         //ajouter l'action d'ouverture d'activity import

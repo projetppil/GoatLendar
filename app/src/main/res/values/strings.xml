@@ -9,4 +9,19 @@
     <string name="action_settings">Settings</string>
     <string name="Open">Open</string>
     <string name="Close">Close</string>
+    <string name="title_activity_test">test</string>
+    <string-array name="spinnerItem">
+        <item>Public</item>
+        <item>Priver</item>
+    </string-array>
+
+
+    <string-array name="spinner_arrays">
+        <item>Public</item>
+        <item>Priver</item>
+    </string-array>
+
+
+
 </resources>
+
