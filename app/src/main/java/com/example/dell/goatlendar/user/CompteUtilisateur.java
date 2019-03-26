@@ -1,6 +1,7 @@
 package com.example.dell.goatlendar.user;
 
 
+import com.example.dell.goatlendar.Notification.GestionnaireNotifications;
 import com.example.dell.goatlendar.evenement.Evenement;
 
 import java.util.ArrayList;
@@ -11,7 +12,7 @@ public class CompteUtilisateur {
     private String prenom;
     private String email;
     private ArrayList<SousCalendrier> sousCalendriers;
-
+    private GestionnaireNotifications notifications;
 
     public CompteUtilisateur(int id , String nom, String prenom, String email) {
         this.id = id;

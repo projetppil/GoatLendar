@@ -42,7 +42,6 @@ public class ControleurListeGroupe extends Fragment {
         //idU a modifier
         ArrayList<Groupe> groupes = getListeGroupe(22);
 
-
         AdapterListeGroupe adapterListeGroupe = new AdapterListeGroupe(getContext() , groupes);
         liste_groupe.setAdapter(adapterListeGroupe);
 
@@ -163,7 +162,7 @@ public class ControleurListeGroupe extends Fragment {
                             //id Utilisateur
                             int idGroupe = Integer.valueOf(jsonObject2.getString("idGroupe"));
                             String nomGroupe = jsonObject2.getString("nomGroupe");
-                            liste.add(new Groupe(idGroupe,nomGroupe));
+                            liste.add(new Groupe(nomGroupe,new ArrayList<CompteUtilisateur>()));
                         }
                     }
 

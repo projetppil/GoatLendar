@@ -28,6 +28,16 @@ public class SousCalendrier {
         return evenement;
     }
 
+    public Evenement getEvenement(int id){
+        Evenement evenement = null;
+        for(int i=0;i<evenements.size();i++){
+            if(evenements.get(i).getId()==id){
+                evenement = evenements.get(i);
+            }
+        }
+        return evenement;
+    }
+
     public void creerEvenement(){
         Evenement evenement = new Evenement();
     }

@@ -11,6 +11,7 @@ import java.util.Arrays;
 
 public class Evenement {
     private int type;
+    private int id;
     private Color couleur;
     private String nom;
     private Chat chat;
@@ -40,6 +41,17 @@ public class Evenement {
         this.nom = nom;
         this.dateFin = dateFin;
         this.dateDebut = dateDebut;
+    }
+
+    public Evenement(int type, Color couleur, String nom, Timestamp dateFin, Timestamp dateDebut ,int id) {
+        this.chat = new Chat();
+        this.gestionnaireMembre = new GestionnaireMembre();
+        this.type = type;
+        this.couleur = couleur;
+        this.nom = nom;
+        this.dateFin = dateFin;
+        this.dateDebut = dateDebut;
+        this.id = id;
     }
 
     public int getType(){
@@ -83,5 +95,13 @@ public class Evenement {
 
     public void setDateFin(Timestamp dateFin) {
         this.dateFin = dateFin;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

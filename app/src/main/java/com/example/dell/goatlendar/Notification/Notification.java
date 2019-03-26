@@ -13,6 +13,8 @@ public abstract class Notification {
         this.id = id;
     }
 
+
+
     public abstract String getTypeNotification();
 
 }

@@ -8,7 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import com.example.dell.goatlendar.R;
 
-public class ControleurParametres extends Fragment {
+public class
+        ControleurParametres extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater , ViewGroup container , Bundle savedInstanceState){

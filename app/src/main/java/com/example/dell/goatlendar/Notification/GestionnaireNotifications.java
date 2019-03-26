@@ -31,4 +31,6 @@ public class GestionnaireNotifications {
         return listeNotification.get(id).getTypeNotification();
     }
 
+
+
 }
