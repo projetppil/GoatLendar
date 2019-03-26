@@ -6,6 +6,7 @@
         android:gravity="left"
         android:orientation="horizontal"
         android:background="@drawable/background_navbar"
+        android:id="@+id/nav_info"
 
 >
 

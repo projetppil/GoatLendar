@@ -11,4 +11,8 @@ public class Constants {
     public static final String URL_GetAllEvenements=ROOT_URL+"getAllEvenements.php";
     //URL de la requete get evenement
     public static final String URL_GetEvenement=ROOT_URL+"getEvenement.php";
+    //URL de création groupe
+    public  static final String URL_CreateGroupe=ROOT_URL+"creerGroupe.php";
+    //URL de recupération liste groupes
+    public  static final String URL_GetUsersGroupe=ROOT_URL+"getUserGroups.php";
 }

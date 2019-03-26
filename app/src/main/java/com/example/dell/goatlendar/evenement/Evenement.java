@@ -16,7 +16,7 @@ public class Evenement {
     private Chat chat;
     private GestionnaireMembre gestionnaireMembre;
     private Timestamp dateFin;
-    private Timestamp dateDebut;
+    private String dateDebut;
 
     public Evenement() {
         this.chat = new Chat();
@@ -28,11 +28,11 @@ public class Evenement {
     }
 
     public String getHeur(){
-        return String.valueOf(dateDebut.getTime());
+        return dateDebut;
     }
 
 
-    public Evenement(int type, Color couleur, String nom, Timestamp dateFin, Timestamp dateDebut) {
+    public Evenement(int type, Color couleur, String nom, Timestamp dateFin, String dateDebut) {
         this.chat = new Chat();
         this.gestionnaireMembre = new GestionnaireMembre();
         this.type = type;
@@ -77,7 +77,7 @@ public class Evenement {
         this.nom = nom;
     }
 
-    public void setDateDebut(Timestamp dateDebut) {
+    public void setDateDebut(String dateDebut) {
         this.dateDebut = dateDebut;
     }
 

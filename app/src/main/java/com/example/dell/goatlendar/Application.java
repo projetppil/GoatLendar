@@ -7,8 +7,8 @@ import com.example.dell.goatlendar.user.CompteUtilisateur;
 import java.util.ArrayList;
 
 public class Application {
-   public static Application instance  =  new Application();
-    private CompteUtilisateur utilisateurActuel;
+    public static Application instance  =  new Application();
+    private CompteUtilisateur utilisateurActuel = new CompteUtilisateur();
     private GestionnaireMail mail;
 
     private Application(){
@@ -60,4 +60,13 @@ public class Application {
            return instance;
      }
 
+
+     public void setUtilisateurActuel(CompteUtilisateur utilisateurActuel) {
+
+       this.utilisateurActuel = utilisateurActuel;
+     }
+
+    public  CompteUtilisateur getUtilisateurActuel() {
+        return utilisateurActuel;
+    }
 }
