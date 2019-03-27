@@ -69,4 +69,6 @@ public class Application {
     public  CompteUtilisateur getUtilisateurActuel() {
         return utilisateurActuel;
     }
+
+
 }

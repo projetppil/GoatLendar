@@ -18,6 +18,7 @@ import java.util.ArrayList;
 public class AdapterListEvent extends ArrayAdapter<Evenement> {
     private final Context context;
     private final ArrayList<Evenement> values;
+    private Evenement Event;
 
     public AdapterListEvent(Context context, ArrayList<Evenement> values) {
         super(context, -1, values);
@@ -31,20 +32,36 @@ public class AdapterListEvent extends ArrayAdapter<Evenement> {
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
         View rowView = inflater.inflate(R.layout.item_event, parent, false);
+
         TextView nom = (TextView) rowView.findViewById(R.id.nom_evenement);
         TextView proprietaire = (TextView) rowView.findViewById(R.id.proprietaire_event);
         TextView heur = (TextView) rowView.findViewById(R.id.heur_event);
 
+
         nom.setText(values.get(position).getNom());
         proprietaire.setText("karim");
         heur.setText(values.get(position).getHeur());
+
+        //Remplir Event
+        Event = new Evenement(values.get(position).getType(),
+                values.get(position).getCouleur(),
+                values.get(position).getNom(),
+                values.get(position).getDateFin(),
+                values.get(position).getDateDebut(),
+                values.get(position).getHeureDebut(),
+                values.get(position).getLieuEvent(),
+                values.get(position).getDescriptiveEvent(),
+                values.get(position).getId());
+
+        final ControleurEvenement c = new ControleurEvenement();
+        c.setEvenement(Event);
 
         rowView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 final FragmentTransaction ft = ((AppCompatActivity)getContext()).getSupportFragmentManager().beginTransaction();
-                ft.replace(R.id.main, new ControleurEvenement(), "NewFragmentTag");
+                ft.replace(R.id.main, c, "NewFragmentTag");
                 ft.addToBackStack(null);
                 ft.commit();
 

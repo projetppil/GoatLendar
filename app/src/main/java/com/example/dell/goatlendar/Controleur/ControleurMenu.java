@@ -13,6 +13,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
+import com.example.dell.goatlendar.Application;
 import com.example.dell.goatlendar.R;
 
 public class ControleurMenu extends AppCompatActivity {
@@ -81,6 +82,9 @@ public class ControleurMenu extends AppCompatActivity {
                         return true;
                     case R.id.exit:
                         //ajouter l'action d'ouverture d'activity exit
+                        ControleurLogin login = new ControleurLogin();
+                        Application.getInstance().setUtilisateurActuel(null);
+
                         return true;
 
                 }

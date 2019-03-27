@@ -15,7 +15,7 @@ public class Groupe extends GestionnaireAmis {
     /**
      * Constructeur de la classe
      * @param nom Nom du groupe
-     * @param listeAmi Liste des amis qui compose le groupe au départ
+     * @param id Liste des amis qui compose le groupe au départ
      */
    public Groupe(int id , String nom){
         this.nom = nom;

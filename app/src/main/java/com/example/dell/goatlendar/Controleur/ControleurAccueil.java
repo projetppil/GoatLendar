@@ -167,18 +167,18 @@ public class ControleurAccueil extends Fragment  {
                 });
 
 
-                valider_creation.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        final FragmentTransaction ft = getFragmentManager().beginTransaction();
-                        ft.replace(R.id.main, new ControleurEvenement(), "NewFragmentTag");
-                        ft.addToBackStack(null);
-                        ft.commit();
-
-                        dialog.dismiss();
-
-                    }
-                });
+//                valider_creation.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View view) {
+//                        final FragmentTransaction ft = getFragmentManager().beginTransaction();
+//                        ft.replace(R.id.main, new ControleurEvenement(), "NewFragmentTag");
+//                        ft.addToBackStack(null);
+//                        ft.commit();
+//
+//                        dialog.dismiss();
+//
+//                    }
+//                });
 
                 annuler_creation.setOnClickListener(new View.OnClickListener() {
                        @Override
@@ -266,8 +266,8 @@ public class ControleurAccueil extends Fragment  {
     private void recupererTouslesEvenements(String d){
 
         final String  date = d;
+        final int IdUser = Application.getInstance().getUtilisateurActuel().getId();
 
-        System.out.println(d);
         //progressbar
         StringRequest stringRequest=new StringRequest(Request.Method.POST, Constants.URL_GetAllEvenements, new Response.Listener<String>() {
             @Override
@@ -289,13 +289,23 @@ public class ControleurAccueil extends Fragment  {
 
                             int TypeEvent = Integer.valueOf(jsonObject2.getString("Type_eve"));
                             String nomEvent = jsonObject2.getString("Nom_eve");
-
+                            String LieuEvent = jsonObject2.getString("Lieu_eve");
+                            String DescriptionEveent = jsonObject2.getString("Description_eve");
+                            int IdEvent = Integer.valueOf(jsonObject2.getString("IdEvent"));
 
                             evenements.add(new Evenement(TypeEvent, new Color(), nomEvent,
-                                    new Timestamp(System.currentTimeMillis()), date));
+                                      jsonObject2.getString("DateFin_eve")
+                                             + jsonObject2.getString("TempFin_eve") ,
+                                             jsonObject2.getString("DateDebut_eve")
+                                           , jsonObject2.getString("TempDebut_eve"),
+                                             LieuEvent ,
+                                             DescriptionEveent,
+                                             IdEvent
+                                    ));
 
                         }
                         AdapterListEvent adapterListEvent = new AdapterListEvent(getActivity() , evenements);
+
                         listView.setAdapter(adapterListEvent);
                     }
 
@@ -314,6 +324,7 @@ public class ControleurAccueil extends Fragment  {
 
                 Map<String,String> params=new HashMap<>();
                 params.put("date",date);
+                params.put("IdUser",String.valueOf(IdUser));
                 return params;
             }
         };

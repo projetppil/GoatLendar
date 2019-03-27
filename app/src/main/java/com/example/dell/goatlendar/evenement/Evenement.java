@@ -16,8 +16,12 @@ public class Evenement {
     private String nom;
     private Chat chat;
     private GestionnaireMembre gestionnaireMembre;
-    private Timestamp dateFin;
+    private String dateFin;
     private String dateDebut;
+    private String HeureDebut;
+    private String HeureFin;
+    private String lieuEvent ;
+    private String DescriptiveEvent;
 
     public Evenement() {
         this.chat = new Chat();
@@ -33,7 +37,7 @@ public class Evenement {
     }
 
 
-    public Evenement(int type, Color couleur, String nom, Timestamp dateFin, String dateDebut) {
+    public Evenement(int type, Color couleur, String nom,  String dateFin, String dateDebut , String HeureDebut, String lieu , String Descriptive) {
         this.chat = new Chat();
         this.gestionnaireMembre = new GestionnaireMembre();
         this.type = type;
@@ -41,9 +45,13 @@ public class Evenement {
         this.nom = nom;
         this.dateFin = dateFin;
         this.dateDebut = dateDebut;
+        this.HeureDebut =  HeureDebut;
+        this.lieuEvent = lieu;
+        this.DescriptiveEvent = Descriptive;
     }
 
-    public Evenement(int type, Color couleur, String nom, Timestamp dateFin, Timestamp dateDebut ,int id) {
+    public Evenement(int type, Color couleur, String nom, String dateFin, String dateDebut ,String HeureDebut, String lieu , String Descriptive
+                     ,int id) {
         this.chat = new Chat();
         this.gestionnaireMembre = new GestionnaireMembre();
         this.type = type;
@@ -52,6 +60,9 @@ public class Evenement {
         this.dateFin = dateFin;
         this.dateDebut = dateDebut;
         this.id = id;
+        this.HeureDebut =  HeureDebut;
+        this.lieuEvent = lieu;
+        this.DescriptiveEvent = Descriptive;
     }
 
     public int getType(){
@@ -77,6 +88,34 @@ public class Evenement {
         return chat;
     }
 
+    public Color getCouleur() {
+        return couleur;
+    }
+
+    public String getDateFin() {
+        return dateFin;
+    }
+
+    public String getDateDebut() {
+        return dateDebut;
+    }
+
+    public String getHeureDebut() {
+        return HeureDebut;
+    }
+
+    public String getHeureFin() {
+        return HeureFin;
+    }
+
+    public String getLieuEvent() {
+        return lieuEvent;
+    }
+
+    public String getDescriptiveEvent() {
+        return DescriptiveEvent;
+    }
+
     public void setType(int type) {
         this.type = type;
     }
@@ -93,9 +132,19 @@ public class Evenement {
         this.dateDebut = dateDebut;
     }
 
-    public void setDateFin(Timestamp dateFin) {
+    public void setDateFin(String dateFin) {
         this.dateFin = dateFin;
     }
+
+    public void setHeureDebut(String heureDebut) {
+        HeureDebut = heureDebut;
+    }
+
+    public void setHeureFin(String heureFin) {
+        HeureFin = heureFin;
+    }
+
+
 
     public int getId() {
         return id;
@@ -104,4 +153,7 @@ public class Evenement {
     public void setId(int id) {
         this.id = id;
     }
+
+
+
 }

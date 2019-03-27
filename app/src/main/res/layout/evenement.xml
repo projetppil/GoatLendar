@@ -99,7 +99,9 @@ au restaurant Dell Arte
 
         <include android:layout_width="match_parent"
                  android:layout_height="wrap_content"
-                 layout="@layout/item_option_event"/>
+                 android:id="@+id/proprietaire_event"
+                 layout="@layout/item_option_event"
+        />
 
 
 

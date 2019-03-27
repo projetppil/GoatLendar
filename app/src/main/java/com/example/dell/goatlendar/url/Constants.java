@@ -17,4 +17,6 @@ public class Constants {
     public  static final String URL_GetUsersGroupe=ROOT_URL+"getUserGroups.php";
     //URL de récupération de notifications
     public  static final String URL_GetNotifications=ROOT_URL+"getNotifications.php";
+    //URL de récupération ddes invites
+    public  static final String URL_GetInvites=ROOT_URL+"getInvites.php";
 }

@@ -56,6 +56,9 @@ public class CompteUtilisateur {
         return email;
     }
 
+    public int getId() {
+        return id;
+    }
 
     public ArrayList<SousCalendrier> getSousCalendriers() {
         return sousCalendriers;
@@ -73,4 +76,7 @@ public class CompteUtilisateur {
         this.email = email;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
 }
