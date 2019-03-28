@@ -11,9 +11,7 @@ Description (Version Française):
   - Création et maintient d'un compte personnel sur un serveur externe.
   - Organisation de votre agenda dans une page d'accueil.
   - Création d'événements personnalisés.
-  - Ajout d'amis lors de la création d'événement.
-  - Ajout d'amis dans des groupes d'amis pour pouvoir ajouter directement ce groupe à un événement.
-  - être notifié de la venue proche d'un événement.  
+  - Ajout d'amis dans des groupes d'amis.
   
   
   Guide d'installation:
@@ -44,6 +42,6 @@ Vous pouvez aussi utiliser ce dépot pour installer l'application. (ça sera bea
   
   Notes: 
   Il est possible que vous n'ayez pas immédiatement accès à la base de donnée.
-  Cet événement arrive lorsque trop de personnes cherche à y accéder.
+  Cet événement arrive lorsque trop de personnes cherchent à y accéder.
 
 Licence : copyleft.
