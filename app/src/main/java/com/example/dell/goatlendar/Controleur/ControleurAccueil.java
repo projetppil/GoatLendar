@@ -335,7 +335,7 @@ public class ControleurAccueil extends Fragment  {
         NavigationView  navigationView = getActivity().findViewById(R.id.barre_de_nav);
         textViewNomUser = navigationView.getHeaderView(0).findViewById(R.id.textNom);
         textViewEmail = navigationView.getHeaderView(0).findViewById(R.id.textEmail);
-        textViewNomUser.setText(c.getNom());
+        textViewNomUser.setText(c.getNom()+" "+c.getPrenom());
         textViewEmail.setText(c.getEmail());
 
 

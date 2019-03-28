@@ -9,18 +9,24 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.TextView;
+import android.widget.*;
+import com.android.volley.*;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.dell.goatlendar.Adapter.AdapterListCommentaire;
 import com.example.dell.goatlendar.Adapter.AdapterListEvent;
+import com.example.dell.goatlendar.Application;
 import com.example.dell.goatlendar.R;
 import com.example.dell.goatlendar.evenement.Commentaire;
 import com.example.dell.goatlendar.evenement.Evenement;
+import com.example.dell.goatlendar.url.Constants;
 import com.example.dell.goatlendar.user.CompteUtilisateur;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ControleurEvenement extends Fragment {
 
@@ -72,9 +78,68 @@ public class ControleurEvenement extends Fragment {
             }
         });
 
+        ImageView icon_delete_event = (ImageView)view.findViewById(R.id.delete_event);
+        icon_delete_event.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                supprimerEvenement(evenement.getId());
+//                final FragmentTransaction ft = ((AppCompatActivity)getContext()).getSupportFragmentManager().beginTransaction();
+//                ControleurListInvites c = new ControleurListInvites();
+//                c.setIdEvent(evenement.getId());
+//                ft.replace(R.id.main, c, "invited");
+//                ft.addToBackStack(null);
+//                ft.commit();
+
+            }
+        });
 
 
         return view;
+    }
+
+    private void supprimerEvenement(int IdEvent){
+
+        final int idEvent = IdEvent;
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, Constants.URL_SupprimerEvenemnt, new Response.Listener<String>() {
+
+            @Override
+            public void onResponse(String response) {
+                //Récupération de la réponse JSON
+                try {
+                    JSONObject jsonObject=new JSONObject(response);
+                    if (jsonObject.getBoolean("error")) {
+                        Toast.makeText(getContext(),jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
+                    }else{
+
+                        //OUVRIRE LE MENU 
+
+                    }
+
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getContext(),"Pas de connexion", Toast.LENGTH_SHORT).show();
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+
+                Map<String,String> params=new HashMap<>();
+                params.put("IdEvent",String.valueOf(idEvent));
+                return params;
+            }
+        };
+        RequestQueue requestQueue= Volley.newRequestQueue(getContext());
+        requestQueue.add(stringRequest);
+
     }
 
 
