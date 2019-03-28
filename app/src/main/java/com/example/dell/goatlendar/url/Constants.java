@@ -20,7 +20,9 @@ public class Constants {
     //URL de récupération de notifications
     public  static final String URL_GetNotifications=ROOT_URL+"getNotifications.php";
     //URL de récupération ddes invites
-    public  static final String URL_GetInvites=ROOT_URL+"getInvites.php";
+    public static final String URL_GetInvites = ROOT_URL + "getInvites.php";
+    //URL de récupérationde mes evenements
+    public static final String URL_GetMesEvenements = ROOT_URL + "getMesEvenements.php";
     //URL de superssion dun evenement
     public  static final String URL_SupprimerEvenemnt=ROOT_URL+"supprimerEvenement.php";
 }
