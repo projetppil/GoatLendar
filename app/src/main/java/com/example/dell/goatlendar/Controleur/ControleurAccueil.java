@@ -7,6 +7,7 @@ import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.icu.util.ULocale;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -56,6 +57,67 @@ public class ControleurAccueil extends Fragment  {
     private ListView listView ;
     private TextView textViewNomUser;
     private TextView textViewEmail;
+
+    public void creerEvenement(String n, String dDebut,String hDebut,String dFin,String hFin,String l, String d,String id,String t){
+
+        final String  nom= n;
+        final String dateDebut = dDebut;
+        final String heureDebut = hDebut;
+        final String dateFin = dFin;
+        final String heureFin = hFin;
+        final String lieu = l;
+        final String desc = d;
+        final String idUser = id;
+        final String type = t;
+        final  String image = "/image.png";
+
+        //progressbar
+        StringRequest stringRequest=new StringRequest(Request.Method.POST, Constants.URL_CreerEvenement, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                //Récupération de la réponse JSON
+                try {
+                    JSONObject jsonObject=new JSONObject(response);
+                    // S'il y a une erreur dans le script php
+                    if (jsonObject.getBoolean("error")){
+                        Toast.makeText(getContext(),jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
+                    }else
+                    {
+                        // Sinon je fais ce qu'il faut, créer un événement
+
+                    }
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getContext(),error.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+
+                Map<String,String> params=new HashMap<>();
+                params.put("nom",nom);
+                params.put("dateDebut",dateDebut);
+                params.put("heureDebut",heureDebut);
+                params.put("dateFin",dateFin);
+                params.put("heureFin",heureFin);
+                params.put("lieu",lieu);
+                params.put("desc",desc);
+                params.put("idUser" , idUser);
+                params.put("type" , type);
+                //params.put("image" , image);
+                return params;
+            }
+        };
+        RequestQueue requestQueue= Volley.newRequestQueue(getContext());
+
+        requestQueue.add(stringRequest);
+    }
 
     @Nullable
     @Override
@@ -167,18 +229,63 @@ public class ControleurAccueil extends Fragment  {
                 });
 
 
-//                valider_creation.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View view) {
-//                        final FragmentTransaction ft = getFragmentManager().beginTransaction();
-//                        ft.replace(R.id.main, new ControleurEvenement(), "NewFragmentTag");
-//                        ft.addToBackStack(null);
-//                        ft.commit();
-//
-//                        dialog.dismiss();
-//
-//                    }
-//                });
+                valider_creation.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        TextView nom_evenement = promptView.findViewById(R.id.nomEvenement);
+                        TextView dateDebut_evenement = promptView.findViewById(R.id.date_start);
+                        TextView heureDebut_evenement = promptView.findViewById(R.id.heure_start);
+                        TextView dateFin_evenement = promptView.findViewById(R.id.date_finish);
+                        TextView heureFin_evenement = promptView.findViewById(R.id.heure_finish);
+                        TextView lieu_evenement = promptView.findViewById(R.id.lieuEvenement);
+                        TextView desc_evenement = promptView.findViewById(R.id.description);
+                        Spinner type_evenement = promptView.findViewById(R.id.categorie);
+                        if(nom_evenement.getText().toString().length() < 32){
+                            if(dateDebut_evenement.getText().toString().length() < 36){
+                                if(heureDebut_evenement.getText().toString().length() < 36){
+                                    if(dateFin_evenement.getText().toString().length() < 36){
+                                        if(heureFin_evenement.getText().toString().length() < 36){
+                                            if(lieu_evenement.getText().toString().length() < 32){
+                                                    String nom = nom_evenement.getText().toString();
+                                                    String dateDebut = dateDebut_evenement.getText().toString();
+                                                    String heureDebut = heureDebut_evenement.getText().toString();
+                                                    String dateFin = dateFin_evenement.getText().toString();
+                                                    String heureFin = heureFin_evenement.getText().toString();
+                                                    String lieu = lieu_evenement.getText().toString();
+                                                    String desc = desc_evenement.getText().toString();
+                                                    String type="";
+                                                if(type_evenement.getSelectedItem().toString().equals("Public")) {
+                                                        type = "0";
+                                                    }else if(type_evenement.getSelectedItem().toString().equals("Private")){
+                                                        type = "1";
+                                                    }
+                                                Integer i = new Integer(Application.getInstance().getUtilisateurCourant().getId());
+                                                    String idUser = i.toString();
+                                                    System.out.println(nom);
+                                                    System.out.println(dateDebut);
+                                                    System.out.println(heureDebut);
+                                                    System.out.println(dateFin);
+                                                    System.out.println(heureFin);
+                                                    System.out.println(lieu);
+                                                    System.out.println(desc);
+                                                    System.out.println(type);
+                                                    System.out.println(idUser);
+                                                    creerEvenement(nom,dateDebut,heureDebut,dateFin,heureFin,lieu,desc,idUser,type);
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        final FragmentTransaction ft = getFragmentManager().beginTransaction();
+                        ft.replace(R.id.main, new ControleurEvenement(), "NewFragmentTag");
+                        ft.addToBackStack(null);
+                        ft.commit();
+
+                        dialog.dismiss();
+
+                    }
+                });
 
                 annuler_creation.setOnClickListener(new View.OnClickListener() {
                        @Override

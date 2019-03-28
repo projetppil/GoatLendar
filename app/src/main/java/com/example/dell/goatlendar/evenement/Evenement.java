@@ -58,7 +58,7 @@ public class Evenement {
         this.couleur = couleur;
         this.nom = nom;
         this.dateFin = dateFin;
-        this.dateDebut = dateDebut;
+        this.dateDebut = dateDebut.toString();
         this.id = id;
         this.HeureDebut =  HeureDebut;
         this.lieuEvent = lieu;

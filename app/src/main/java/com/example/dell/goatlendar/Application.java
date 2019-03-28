@@ -134,6 +134,10 @@ public class Application {
 
     }
 
+    public CompteUtilisateur getUtilisateurCourant(){
+      return utilisateurActuel;
+    }
+
      public  static Application  getInstance(){
            return instance;
      }
