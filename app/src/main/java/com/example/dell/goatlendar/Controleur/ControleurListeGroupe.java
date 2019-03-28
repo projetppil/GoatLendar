@@ -95,6 +95,7 @@ public class ControleurListeGroupe extends Fragment {
 
         return view;
     }
+    /*
     public void creerGroupe(String nom,int id){
         final String  nomG= nom;
         final int idUser=id;
@@ -139,6 +140,7 @@ public class ControleurListeGroupe extends Fragment {
 
         requestQueue.add(stringRequest);
     }
+    */
     ArrayList<Groupe> getListeGroupe(int idU){
         final int idUser=idU;
         final ArrayList<Groupe> liste=new ArrayList<>();
@@ -159,10 +161,11 @@ public class ControleurListeGroupe extends Fragment {
                         JSONObject jsonObject2;
                         for (int i = 0; i < nbEvenetsRecuperer ; i++){
                             jsonObject2 = new JSONObject(jsonObject.getString(String.valueOf(i)));
-                            //id Utilisateur
-                            int idGroupe = Integer.valueOf(jsonObject2.getString("idGroupe"));
-                            String nomGroupe = jsonObject2.getString("nomGroupe");
-                            liste.add(new Groupe(idGroupe,nomGroupe));
+                            String nomGroupe = jsonObject2.getString("NomGroupe");
+                            //id Groupe non gérer dans la bdd
+                            if (!nomGroupe.equals("")) {
+                                liste.add(new Groupe(1, nomGroupe));
+                            }
                         }
                     }
 
