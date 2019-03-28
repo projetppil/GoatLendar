@@ -47,7 +47,7 @@ public class ControleurMenu extends AppCompatActivity {
                 FragmentManager fg = getSupportFragmentManager();
                 switch (menuItem.getItemId()) {
                     case R.id.notification:
-                        ConroleurNotifications app = new ConroleurNotifications();
+                        ControleurNotifications app = new ControleurNotifications();
                         toolbar.setTitle("Notifications");
                         fg.beginTransaction().replace(R.id.main , app).addToBackStack("back1").commit();
                         return true;

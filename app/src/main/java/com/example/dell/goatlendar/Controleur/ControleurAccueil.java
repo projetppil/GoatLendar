@@ -58,7 +58,7 @@ public class ControleurAccueil extends Fragment  {
     private TextView textViewNomUser;
     private TextView textViewEmail;
 
-    public void creerEvenement(String n, String dDebut,String hDebut,String dFin,String hFin,String l, String d,String id,String t){
+    public void creerEvenement(String n, String dDebut,String hDebut,String dFin,String hFin,String l, String d,String id,String t,String img){
 
         final String  nom= n;
         final String dateDebut = dDebut;
@@ -69,7 +69,7 @@ public class ControleurAccueil extends Fragment  {
         final String desc = d;
         final String idUser = id;
         final String type = t;
-        final  String image = "/image.png";
+        final  String image = img;
 
         //progressbar
         StringRequest stringRequest=new StringRequest(Request.Method.POST, Constants.URL_CreerEvenement, new Response.Listener<String>() {
@@ -110,7 +110,7 @@ public class ControleurAccueil extends Fragment  {
                 params.put("desc",desc);
                 params.put("idUser" , idUser);
                 params.put("type" , type);
-                //params.put("image" , image);
+                params.put("image" , image);
                 return params;
             }
         };
@@ -188,11 +188,13 @@ public class ControleurAccueil extends Fragment  {
                  * recuperer unr arraylist<CompteUtilisateur> qui va contenir toutes les utilisateur de l'application
                  * dans mon cas je vais la remplir mannuellement apres changer la  avec les bonnes informations
                  */
-                final ArrayList<CompteUtilisateur> users = new ArrayList<>();
-                users.add(new CompteUtilisateur(1 , "Abdi" , "Karim" , "karim213@gmail.com"));
-                users.add(new CompteUtilisateur(2 , "Salhi" , "Mohamed El reda" , "reda213@gmail.com"));
-                users.add(new CompteUtilisateur(3 , "El kefif" , "Mohamed Mehdi" , "mehdi213@gmail.com"));
-
+                final ArrayList<CompteUtilisateur> users;
+                users = Application.getInstance().getUsers(getContext());
+                System.out.println("------------------------------------------------------------");
+                for(CompteUtilisateur c: users){
+                    c.getNom();
+                }
+                System.out.println("------------------------------------------------------------");
                 final ArrayList<String> users_names = new ArrayList<>();
                 for (int i=0 ; i<users.size() ; i++)
                     users_names.add(users.get(i).getNom() + " "+ users.get(i).getPrenom());
@@ -233,49 +235,79 @@ public class ControleurAccueil extends Fragment  {
                     @Override
                     public void onClick(View view) {
                         TextView nom_evenement = promptView.findViewById(R.id.nomEvenement);
-                        TextView dateDebut_evenement = promptView.findViewById(R.id.date_start);
-                        TextView heureDebut_evenement = promptView.findViewById(R.id.heure_start);
-                        TextView dateFin_evenement = promptView.findViewById(R.id.date_finish);
-                        TextView heureFin_evenement = promptView.findViewById(R.id.heure_finish);
+                        EditText anneeDebut_evenement = promptView.findViewById(R.id.anneeDebut);
+                        EditText moisDebut_evenement = promptView.findViewById(R.id.moisDebut);
+                        EditText jourDebut_evenement = promptView.findViewById(R.id.jourDebut);
+                        EditText heureDebut_evenement = promptView.findViewById(R.id.heureDebut);
+                        EditText minuteDebut_evenement = promptView.findViewById(R.id.minDebut);
+                        EditText anneeFin_evenement = promptView.findViewById(R.id.anneeFin);
+                        EditText moisFin_evenement = promptView.findViewById(R.id.moisFin);
+                        EditText jourFin_evenement = promptView.findViewById(R.id.jourFin);
+                        EditText heureFin_evenement = promptView.findViewById(R.id.heureFin);
+                        EditText minuteFin_evenement = promptView.findViewById(R.id.minFin);
                         TextView lieu_evenement = promptView.findViewById(R.id.lieuEvenement);
                         TextView desc_evenement = promptView.findViewById(R.id.description);
                         Spinner type_evenement = promptView.findViewById(R.id.categorie);
-                        if(nom_evenement.getText().toString().length() < 32){
-                            if(dateDebut_evenement.getText().toString().length() < 36){
-                                if(heureDebut_evenement.getText().toString().length() < 36){
-                                    if(dateFin_evenement.getText().toString().length() < 36){
-                                        if(heureFin_evenement.getText().toString().length() < 36){
-                                            if(lieu_evenement.getText().toString().length() < 32){
-                                                    String nom = nom_evenement.getText().toString();
-                                                    String dateDebut = dateDebut_evenement.getText().toString();
-                                                    String heureDebut = heureDebut_evenement.getText().toString();
-                                                    String dateFin = dateFin_evenement.getText().toString();
-                                                    String heureFin = heureFin_evenement.getText().toString();
-                                                    String lieu = lieu_evenement.getText().toString();
-                                                    String desc = desc_evenement.getText().toString();
-                                                    String type="";
-                                                if(type_evenement.getSelectedItem().toString().equals("Public")) {
-                                                        type = "0";
-                                                    }else if(type_evenement.getSelectedItem().toString().equals("Private")){
-                                                        type = "1";
-                                                    }
-                                                Integer i = new Integer(Application.getInstance().getUtilisateurCourant().getId());
-                                                    String idUser = i.toString();
-                                                    System.out.println(nom);
-                                                    System.out.println(dateDebut);
-                                                    System.out.println(heureDebut);
-                                                    System.out.println(dateFin);
-                                                    System.out.println(heureFin);
-                                                    System.out.println(lieu);
-                                                    System.out.println(desc);
-                                                    System.out.println(type);
-                                                    System.out.println(idUser);
-                                                    creerEvenement(nom,dateDebut,heureDebut,dateFin,heureFin,lieu,desc,idUser,type);
+                        Integer ad = Integer.parseInt(anneeDebut_evenement.getText().toString());
+                        Integer af = Integer.parseInt(anneeFin_evenement.getText().toString());
+                        Integer md = Integer.parseInt(moisDebut_evenement.getText().toString());
+                        Integer mf = Integer.parseInt(moisFin_evenement.getText().toString());
+                        Integer jd = Integer.parseInt(jourDebut_evenement.getText().toString());
+                        Integer jf = Integer.parseInt(jourFin_evenement.getText().toString());
+                        if(md <= 12 && 0 < md && 0<mf && mf <= 12 && jd <=31 && jf <= 31 && 0<jd && 0<jf) {
+                            if (nom_evenement.getText().toString().length() < 32) {
+                                if (ad <= af) {
+                                    if ((ad == af && md <= mf) || ad < af) {
+                                        if (lieu_evenement.getText().toString().length() < 32) {
+                                            String nom = nom_evenement.getText().toString();
+                                            String dateDebut = anneeDebut_evenement.getText().toString() +
+                                                    "-"+moisDebut_evenement.getText().toString() +
+                                                    "-"+jourDebut_evenement.getText().toString();
+                                            String heureDebut = heureDebut_evenement.getText().toString()+
+                                                    ":"+minuteDebut_evenement;
+                                            String dateFin = anneeFin_evenement.getText().toString() +
+                                                    "-"+moisFin_evenement.getText().toString() +
+                                                    "-"+jourFin_evenement.getText().toString();
+                                            String heureFin = heureFin_evenement.getText().toString()+
+                                                    ":"+minuteFin_evenement;
+                                            String lieu = lieu_evenement.getText().toString();
+                                            String desc = desc_evenement.getText().toString();
+                                            String type = "";
+                                            String image = "chemin";
+                                            if (type_evenement.getSelectedItem().toString().equals("Public")) {
+                                                type = "0";
+                                            } else if (type_evenement.getSelectedItem().toString().equals("Private")) {
+                                                type = "1";
                                             }
+                                            Integer i = new Integer(Application.getInstance().getUtilisateurCourant().getId());
+                                            String idUser = i.toString();
+                                            System.out.println(nom);
+                                            System.out.println(dateDebut);
+                                            System.out.println(heureDebut);
+                                            System.out.println(dateFin);
+                                            System.out.println(heureFin);
+                                            System.out.println(lieu);
+                                            System.out.println(desc);
+                                            System.out.println(type);
+                                            System.out.println(idUser);
+                                            creerEvenement(nom, dateDebut, heureDebut, dateFin, heureFin, lieu, desc, idUser, type, image);
+
+                                        }else{
+                                            Toast.makeText(getContext(),"lieu incorrect",Toast.LENGTH_SHORT);
                                         }
+                                    }else{
+                                        Toast.makeText(getContext(),"date incorrect",Toast.LENGTH_SHORT);
                                     }
+                                }else{
+                                    Toast.makeText(getContext(),"date incorrect",Toast.LENGTH_SHORT);
+
                                 }
+                            }else{
+                                Toast.makeText(getContext(),"nom evenement incorrect",Toast.LENGTH_SHORT);
                             }
+                        }else{
+                            Toast.makeText(getContext(),"date incorrect",Toast.LENGTH_SHORT);
+
                         }
                         final FragmentTransaction ft = getFragmentManager().beginTransaction();
                         ft.replace(R.id.main, new ControleurEvenement(), "NewFragmentTag");

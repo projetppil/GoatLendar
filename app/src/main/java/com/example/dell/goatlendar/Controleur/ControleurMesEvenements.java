@@ -232,50 +232,82 @@ public class ControleurMesEvenements extends Fragment {
                 valider_creation.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        TextView nom_evenement = promptView.findViewById(com.example.dell.goatlendar.R.id.nomEvenement);
+                        TextView nom_evenement = promptView.findViewById(com.example.dell.goatlendar.R.id.nomEvenement);/*
                         TextView dateDebut_evenement = promptView.findViewById(com.example.dell.goatlendar.R.id.date_start);
                         TextView heureDebut_evenement = promptView.findViewById(com.example.dell.goatlendar.R.id.heure_start);
                         TextView dateFin_evenement = promptView.findViewById(com.example.dell.goatlendar.R.id.date_finish);
-                        TextView heureFin_evenement = promptView.findViewById(com.example.dell.goatlendar.R.id.heure_finish);
+                        TextView heureFin_evenement = promptView.findViewById(com.example.dell.goatlendar.R.id.heure_finish);*/
+                        EditText anneeDebut_evenement = promptView.findViewById(R.id.anneeDebut);
+                        EditText moisDebut_evenement = promptView.findViewById(R.id.moisDebut);
+                        EditText jourDebut_evenement = promptView.findViewById(R.id.jourDebut);
+                        EditText heureDebut_evenement = promptView.findViewById(R.id.heureDebut);
+                        EditText minuteDebut_evenement = promptView.findViewById(R.id.minDebut);
+                        EditText anneeFin_evenement = promptView.findViewById(R.id.anneeFin);
+                        EditText moisFin_evenement = promptView.findViewById(R.id.moisFin);
+                        EditText jourFin_evenement = promptView.findViewById(R.id.jourFin);
+                        EditText heureFin_evenement = promptView.findViewById(R.id.heureFin);
+                        EditText minuteFin_evenement = promptView.findViewById(R.id.minFin);
                         TextView lieu_evenement = promptView.findViewById(com.example.dell.goatlendar.R.id.lieuEvenement);
                         TextView desc_evenement = promptView.findViewById(com.example.dell.goatlendar.R.id.description);
                         Spinner type_evenement = promptView.findViewById(com.example.dell.goatlendar.R.id.categorie);
-                        if(nom_evenement.getText().toString().length() < 32){
-                            if(dateDebut_evenement.getText().toString().length() < 36){
-                                if(heureDebut_evenement.getText().toString().length() < 36){
-                                    if(dateFin_evenement.getText().toString().length() < 36){
-                                        if(heureFin_evenement.getText().toString().length() < 36){
-                                            if(lieu_evenement.getText().toString().length() < 32){
-                                                String nom = nom_evenement.getText().toString();
-                                                String dateDebut = dateDebut_evenement.getText().toString();
-                                                String heureDebut = heureDebut_evenement.getText().toString();
-                                                String dateFin = dateFin_evenement.getText().toString();
-                                                String heureFin = heureFin_evenement.getText().toString();
-                                                String lieu = lieu_evenement.getText().toString();
-                                                String desc = desc_evenement.getText().toString();
-                                                String type="";
-                                                if(type_evenement.getSelectedItem().toString().equals("Public")) {
-                                                    type = "0";
-                                                }else if(type_evenement.getSelectedItem().toString().equals("Private")){
-                                                    type = "1";
-                                                }
-                                                Integer i = new Integer(Application.getInstance().getUtilisateurCourant().getId());
-                                                String idUser = i.toString();
-                                                System.out.println(nom);
-                                                System.out.println(dateDebut);
-                                                System.out.println(heureDebut);
-                                                System.out.println(dateFin);
-                                                System.out.println(heureFin);
-                                                System.out.println(lieu);
-                                                System.out.println(desc);
-                                                System.out.println(type);
-                                                System.out.println(idUser);
-                                                creerEvenement(nom,dateDebut,heureDebut,dateFin,heureFin,lieu,desc,idUser,type);
+                        Integer ad = Integer.parseInt(anneeDebut_evenement.getText().toString());
+                        Integer af = Integer.parseInt(anneeFin_evenement.getText().toString());
+                        Integer md = Integer.parseInt(moisDebut_evenement.getText().toString());
+                        Integer mf = Integer.parseInt(moisFin_evenement.getText().toString());
+                        Integer jd = Integer.parseInt(jourDebut_evenement.getText().toString());
+                        Integer jf = Integer.parseInt(jourFin_evenement.getText().toString());
+                        if (md <= 12 && 0 < md && 0 < mf && mf <= 12 && jd <= 31 && jf <= 31 && 0 < jd && 0 < jf) {
+                            if (nom_evenement.getText().toString().length() < 32) {
+                                if (ad <= af) {
+                                    if ((ad == af && md <= mf) || ad < af) {
+                                        if (lieu_evenement.getText().toString().length() < 32) {
+
+                                            String nom = nom_evenement.getText().toString();
+                                            String dateDebut = anneeDebut_evenement.getText().toString() +
+                                                    "-"+moisDebut_evenement.getText().toString() +
+                                                    "-"+jourDebut_evenement.getText().toString();
+                                            String heureDebut = heureDebut_evenement.getText().toString()+
+                                                    ":"+minuteDebut_evenement;
+                                            String dateFin = anneeFin_evenement.getText().toString() +
+                                                    "-"+moisFin_evenement.getText().toString() +
+                                                    "-"+jourFin_evenement.getText().toString();
+                                            String heureFin = heureFin_evenement.getText().toString()+
+                                                    ":"+minuteFin_evenement;
+                                            String lieu = lieu_evenement.getText().toString();
+                                            String desc = desc_evenement.getText().toString();
+                                            String type = "";
+                                            if (type_evenement.getSelectedItem().toString().equals("Public")) {
+                                                type = "0";
+                                            } else if (type_evenement.getSelectedItem().toString().equals("Private")) {
+                                                type = "1";
                                             }
+                                            Integer i = new Integer(Application.getInstance().getUtilisateurCourant().getId());
+                                            String idUser = i.toString();
+                                            System.out.println(nom);
+                                            System.out.println(dateDebut);
+                                            System.out.println(heureDebut);
+                                            System.out.println(dateFin);
+                                            System.out.println(heureFin);
+                                            System.out.println(lieu);
+                                            System.out.println(desc);
+                                            System.out.println(type);
+                                            System.out.println(idUser);
+                                            creerEvenement(nom, dateDebut, heureDebut, dateFin, heureFin, lieu, desc, idUser, type);
+                                        }else{
+                                            Toast.makeText(getContext(),"lieu incorrect",Toast.LENGTH_SHORT);
                                         }
+                                    }else{
+                                        Toast.makeText(getContext(),"date incorrect",Toast.LENGTH_SHORT);
                                     }
+                                }else{
+                                    Toast.makeText(getContext(),"date incorrect",Toast.LENGTH_SHORT);
+
                                 }
+                            }else{
+                                Toast.makeText(getContext(),"nom evenement incorrect",Toast.LENGTH_SHORT);
                             }
+                        }else{
+                            Toast.makeText(getContext(),"date incorrect",Toast.LENGTH_SHORT);
                         }
                         final FragmentTransaction ft = getFragmentManager().beginTransaction();
                         ft.replace(com.example.dell.goatlendar.R.id.main, new ControleurEvenement(), "NewFragmentTag");

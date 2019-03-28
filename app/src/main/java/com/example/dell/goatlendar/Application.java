@@ -1,5 +1,6 @@
 package com.example.dell.goatlendar;
 
+import android.content.Context;
 import android.util.Log;
 import android.widget.Toast;
 import com.android.volley.*;
@@ -7,8 +8,6 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.dell.goatlendar.Social.GestionnaireAmis;
 import com.example.dell.goatlendar.evenement.Evenement;
-import com.example.dell.goatlendar.exception.JsonErreur;
-import com.example.dell.goatlendar.exception.ServeurException;
 import com.example.dell.goatlendar.url.Constants;
 import com.example.dell.goatlendar.user.CompteUtilisateur;
 import org.json.JSONException;
@@ -22,7 +21,7 @@ public class Application {
     private static  final String ATTR_ID="idUser";
     private static  final String ATTR_PRENOM="Prenom";
     private static final String ATTR_NOM="Nom";
-    private static  final String ATTR_MAIL="MAIL";
+    private static  final String ATTR_MAIL="Mail";
 
 
 
@@ -59,17 +58,17 @@ public class Application {
     }
 
 
-    public ArrayList<CompteUtilisateur> getUsers(int id ) {
+    public ArrayList<CompteUtilisateur> getUsers( Context context) {
         final ArrayList<CompteUtilisateur> res = new ArrayList<>();
-        final int idUser = id;
         StringRequest stringRequest = new StringRequest(Request.Method.POST, Constants.URL_GetAmis, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
+                System.out.println("Je suis la réponse "+response);
+
                 try {
                     //System.out.printf("here1");
                     JSONObject jsonObject=new JSONObject(response);
                     if (jsonObject.getBoolean("error")) {
-                        throw new ServeurException(jsonObject.getString("message"));
                     }else{
 
                         int nbNotifs = jsonObject.length()-2;
@@ -88,7 +87,6 @@ public class Application {
                     }
 
                 } catch (JSONException e) {
-                    throw new ServeurException("Erreur de traitement",e);
                 }
             }
 
@@ -96,18 +94,18 @@ public class Application {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                throw new ServeurException("Impossible de joindre le serveur");
             }
         }){
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
 
                 Map<String,String> params=new HashMap<>();
-                params.put("idu",""+idUser+"");
                 return params;
             }
         };
+        RequestQueue requestQueue= Volley.newRequestQueue(context);
 
+        requestQueue.add(stringRequest);
         return res;
 
     }

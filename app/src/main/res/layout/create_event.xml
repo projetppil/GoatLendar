@@ -144,13 +144,60 @@
                         android:text="Date début"
                         android:textColor="#000"
                         android:textSize="18sp" />
+                    <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
 
-                    <EditText
-                        android:id="@+id/date_start"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:ems="10"
-                        android:inputType="date" />
+                        <EditText
+                                android:id="@+id/anneeDebut"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:background="@drawable/radius"
+                                android:hint="aaaa"
+                                android:paddingLeft="10dp"
+                                android:layout_weight="1"
+                                android:maxLength="4"
+                                android:inputType="number"/>
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/textView62"
+                                android:layout_weight="1" android:text="/" android:textSize="24sp"/>
+
+                        <EditText
+                                android:id="@+id/moisDebut"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:background="@drawable/radius"
+                                android:hint="mm"
+                                android:paddingLeft="10dp"
+                                android:layout_weight="1"
+                                android:maxLength="2"
+                                android:inputType="number"/>
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/textView63"
+                                android:text="/" android:textSize="24sp"/>
+
+                        <EditText
+                                android:id="@+id/jourDebut"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:background="@drawable/radius"
+                                android:hint="jj"
+                                android:paddingLeft="10dp"
+                                android:layout_weight="1"
+                                android:maxLength="2"
+                                android:inputType="number"/>
+                    </LinearLayout>
+
                 </LinearLayout>
 
                 <LinearLayout
@@ -166,12 +213,44 @@
                         android:textColor="#000"
                         android:textSize="18sp" />
 
-                    <EditText
-                        android:id="@+id/heure_start"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:ems="10"
-                        android:inputType="time" />
+                    <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                        <EditText
+                                android:id="@+id/heureDebut"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:background="@drawable/radius"
+                                android:hint="hh"
+                                android:paddingLeft="10dp"
+                                android:layout_weight="1"
+                                android:maxLength="2"
+                                android:inputType="number"/>
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/textView66"
+                                android:layout_weight="1"
+                                android:text=":"
+                                android:textSize="24sp"/>
+
+                        <EditText
+                                android:id="@+id/minDebut"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:background="@drawable/radius"
+                                android:hint="mm"
+                                android:paddingLeft="10dp"
+                                android:layout_weight="1"
+                                android:maxLength="2"
+                                android:inputType="number"/>
+                    </LinearLayout>
+
                 </LinearLayout>
             </LinearLayout>
 
@@ -192,13 +271,57 @@
                         android:text="Date fin"
                         android:textColor="#000"
                         android:textSize="18sp" />
+                    <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
 
-                    <EditText
-                        android:id="@+id/date_finish"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:ems="10"
-                        android:inputType="date" />
+                        <EditText
+                                android:id="@+id/anneeFin"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:background="@drawable/radius"
+                                android:hint="aaaa"
+                                android:paddingLeft="10dp"
+                                android:layout_weight="1"
+                                android:maxLength="4"
+                                android:inputType="number"/>
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:layout_height="wrap_content" android:id="@+id/textView6"
+                                android:layout_weight="1" android:text="/" android:textSize="24sp"/>
+
+                        <EditText
+                                android:id="@+id/moisFin"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:background="@drawable/radius"
+                                android:hint="mm"
+                                android:paddingLeft="10dp"
+                                android:layout_weight="1"
+                                android:maxLength="2"
+                                android:inputType="number"/>
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:layout_height="wrap_content" android:id="@+id/textView61"
+                                android:text="/" android:textSize="24sp"/>
+
+                        <EditText
+                                android:id="@+id/jourFin"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:background="@drawable/radius"
+                                android:hint="jj"
+                                android:paddingLeft="10dp" android:layout_weight="1"
+                                android:maxLength="2"
+                                android:inputType="number"/>
+                    </LinearLayout>
+
                 </LinearLayout>
 
                 <LinearLayout
@@ -214,12 +337,43 @@
                         android:textSize="18sp"
                         android:textColor="#000"/>
 
-                    <EditText
-                        android:id="@+id/heure_finish"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:ems="10"
-                        android:inputType="time" />
+                    <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                        <EditText
+                                android:id="@+id/heureFin"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:background="@drawable/radius"
+                                android:hint="hh"
+                                android:paddingLeft="10dp"
+                                android:layout_weight="1"
+                                android:maxLength="2"
+                                android:inputType="number"/>
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/textView65"
+                                android:layout_weight="1" android:text=":"
+                                android:textSize="24sp"/>
+
+                        <EditText
+                                android:id="@+id/minFin"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:background="@drawable/radius"
+                                android:hint="mm"
+                                android:paddingLeft="10dp"
+                                android:layout_weight="1"
+                                android:maxLength="2"
+                                android:inputType="number"/>
+                    </LinearLayout>
+
                 </LinearLayout>
             </LinearLayout>
 

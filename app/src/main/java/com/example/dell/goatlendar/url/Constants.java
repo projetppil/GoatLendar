@@ -25,4 +25,5 @@ public class Constants {
     public static final String URL_GetMesEvenements = ROOT_URL + "getMesEvenements.php";
     //URL de superssion dun evenement
     public  static final String URL_SupprimerEvenemnt=ROOT_URL+"supprimerEvenement.php";
+    public static final String URL_GetAmis = ROOT_URL+"getAmis.php";
 }
