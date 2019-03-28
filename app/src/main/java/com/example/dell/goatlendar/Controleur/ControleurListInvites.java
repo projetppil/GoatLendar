@@ -46,6 +46,7 @@ public class ControleurListInvites extends Fragment {
     private void afficherListeEvenement(int idEvent){
         final String  id = String.valueOf(idEvent);
 
+
         //progressbar
         StringRequest stringRequest=new StringRequest(Request.Method.POST, Constants.URL_GetInvites, new Response.Listener<String>() {
             @Override
@@ -64,16 +65,18 @@ public class ControleurListInvites extends Fragment {
                         //remplir la listes des view avec les invites correspendants
                         for (int i = 0; i<nbInvitesRecuperer;i++){
                             jsonObject2 = new JSONObject(jsonObject.getString(String.valueOf(i)));
-                            int IdInvites =Integer.valueOf(jsonObject2.getString("IdInvites"));
-                            String NomInvites =jsonObject2.getString("NomInvites");;
-                            String PrenomInvites =jsonObject2.getString("PrenomInvites");;
-                            String EmailInvites =jsonObject2.getString("EmialInvites");;
+                            int IdInvites =Integer.valueOf(jsonObject2.getString("IdUser_User"));
+                            String NomInvites =jsonObject2.getString("Nom_User");;
+                            String PrenomInvites =jsonObject2.getString("Prenom_User");;
+                            String EmailInvites =jsonObject2.getString("Mail_User");;
 
                             personnes.add(new CompteUtilisateur(IdInvites,NomInvites,PrenomInvites,EmailInvites));
                         }
                         //adaprtateur liste invites
+
                         final  AdapterListeInvite adapter2 = new AdapterListeInvite(getContext(), personnes);
                         listeInvitees.setAdapter(adapter2);
+
                     }
 
                 } catch (JSONException e) {

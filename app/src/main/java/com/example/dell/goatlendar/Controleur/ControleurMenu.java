@@ -1,5 +1,6 @@
 package com.example.dell.goatlendar.Controleur;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentManager;
@@ -82,9 +83,10 @@ public class ControleurMenu extends AppCompatActivity {
                         return true;
                     case R.id.exit:
                         //ajouter l'action d'ouverture d'activity exit
-                        ControleurLogin login = new ControleurLogin();
                         Application.getInstance().setUtilisateurActuel(null);
-
+                        Intent intent = new Intent(getApplication() , ControleurLogin.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        startActivity(intent);
                         return true;
 
                 }

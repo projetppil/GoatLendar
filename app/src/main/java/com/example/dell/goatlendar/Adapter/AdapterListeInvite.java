@@ -32,7 +32,7 @@ public class AdapterListeInvite extends ArrayAdapter<CompteUtilisateur> {
         final View rowView = inflater.inflate(R.layout.item_invite, parent, false);
         TextView nom = (TextView)rowView.findViewById(R.id.nom_invite);
         nom.setText(values.get(position).getNom() + " " +values.get(position).getPrenom());
-
+        System.out.println(values.get(position).getNom() + " " +values.get(position).getPrenom());
         ImageView editPrivilege = (ImageView)rowView.findViewById(R.id.editInvite);
 
         editPrivilege.setOnClickListener(new View.OnClickListener() {

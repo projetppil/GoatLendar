@@ -86,9 +86,9 @@ public class ControleurLogin extends AppCompatActivity {
                     }else{
                         CompteUtilisateur compteUtilisateur = new CompteUtilisateur(
                                 Integer.valueOf(jsonObject.getString("IdUser")),
+                                jsonObject.getString("NomUser") ,
                                 jsonObject.getString("PrenomUser") ,
-                                jsonObject.getString("Mail") ,
-                                jsonObject.getString("ImageUser"));
+                                jsonObject.getString("Mail"));
                         Application.getInstance().setUtilisateurActuel(compteUtilisateur);
                         startActivity(intent);
                     }
@@ -103,7 +103,7 @@ public class ControleurLogin extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getApplicationContext(),error.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(),"Pas de connexion", Toast.LENGTH_SHORT).show();
             }
         }){
             @Override
