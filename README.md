@@ -18,7 +18,10 @@ Description (Version Française):
   
   Guide d'installation:
   ---
-  Actuellement vous êtes forcé d'utiliser ce dépot distant pour pouvoir installer l'application.  
+ Allez dans l'onglet "Release" et récuperez l'apk dans la dernière version en date. Suivez le guide d'installation joint.
+ 
+ 
+Vous pouvez aussi utiliser ce dépot pour installer l'application. (ça sera beaucoup plus fastidieux)
   Vous aurez besoin de:
    - Android Studio ou InteliJ
    - Un accès au dépot GitHub de l'application
