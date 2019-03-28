@@ -27,7 +27,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ConroleurNotifications extends Fragment {
+public class ControleurNotifications extends Fragment {
     protected Intent intent;
     ArrayList<NotifEvenement> notifications;
     @Nullable
