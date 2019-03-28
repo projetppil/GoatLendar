@@ -40,8 +40,9 @@ public class ControleurListeGroupe extends Fragment {
         ListView liste_groupe = (ListView)view.findViewById((R.id.liste__groupes));
         //recupération de la liste des groupes
         //idU a modifier
-        ArrayList<Groupe> groupes = getListeGroupe(22);
-
+        ArrayList<Groupe> groupes = getListeGroupe(Application.getInstance().getUtilisateurActuel().getId());
+        System.out.println("size : "+groupes.size());
+        System.out.println(Application.getInstance().getUtilisateurActuel().getId());
         AdapterListeGroupe adapterListeGroupe = new AdapterListeGroupe(getContext() , groupes);
         liste_groupe.setAdapter(adapterListeGroupe);
 
@@ -69,8 +70,7 @@ public class ControleurListeGroupe extends Fragment {
                         //enregistrement des infos du groupe
                         TextView nom=promptView.findViewById(R.id.name_new_group);
                         //à modifier pour recupérer le id User Connecté
-                        int idUser= 22;
-                        creerGroupe("Groupe2",idUser);
+                        creerGroupe(String.valueOf(nom.getText()),Application.getInstance().getUtilisateurActuel().getId());
                         dialog.dismiss();
                     }
                 });
@@ -95,16 +95,17 @@ public class ControleurListeGroupe extends Fragment {
 
         return view;
     }
-    /*
     public void creerGroupe(String nom,int id){
         final String  nomG= nom;
         final int idUser=id;
-
+        System.out.println("id User: "+idUser);
+        System.out.println(nom + " mARGOT");
         //progressbar
         StringRequest stringRequest=new StringRequest(Request.Method.POST, Constants.URL_CreateGroupe, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 //Récupération de la réponse JSON
+
                 try {
                     JSONObject jsonObject=new JSONObject(response);
                     if (jsonObject.getBoolean("error")){
@@ -131,8 +132,8 @@ public class ControleurListeGroupe extends Fragment {
             protected Map<String, String> getParams() throws AuthFailureError {
 
                 Map params=new HashMap<>();
+                params.put("idUser",String.valueOf(idUser));
                 params.put("nom",nomG);
-                params.put("idUser",idUser);
                 return params;
             }
         };
@@ -140,7 +141,7 @@ public class ControleurListeGroupe extends Fragment {
 
         requestQueue.add(stringRequest);
     }
-    */
+
     ArrayList<Groupe> getListeGroupe(int idU){
         final int idUser=idU;
         final ArrayList<Groupe> liste=new ArrayList<>();
