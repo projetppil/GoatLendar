@@ -14,12 +14,24 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
+import com.android.volley.*;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.dell.goatlendar.Application;
 import com.example.dell.goatlendar.R;
+import com.example.dell.goatlendar.Social.Groupe;
+import com.example.dell.goatlendar.url.Constants;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ControleurMenu extends AppCompatActivity {
     private ActionBarDrawerToggle actionBarDrawerToggle;
     private DrawerLayout dl;
+    FragmentManager fg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,12 +56,12 @@ public class ControleurMenu extends AppCompatActivity {
         barre_de_nav.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(MenuItem menuItem) {
-                FragmentManager fg = getSupportFragmentManager();
+                 fg = getSupportFragmentManager();
                 switch (menuItem.getItemId()) {
                     case R.id.notification:
-                        ConroleurNotifications app = new ConroleurNotifications();
+                        //ConroleurNotifications app = new ConroleurNotifications();
                         toolbar.setTitle("Notifications");
-                        fg.beginTransaction().replace(R.id.main , app).addToBackStack("back1").commit();
+                        //fg.beginTransaction().replace(R.id.main , app).addToBackStack("back1").commit();
                         return true;
                     case R.id.calendrier:
                         ControleurAccueil app2 = new ControleurAccueil();
@@ -61,9 +73,8 @@ public class ControleurMenu extends AppCompatActivity {
                         //ajouter l'action d'ouverture d'activity calendrier Évènements
                         return false;
                     case R.id.amis:
-                        ControleurListeGroupe groupes = new ControleurListeGroupe();
+                        getListeGroupe(Application.getInstance().getUtilisateurActuel().getId());
                         toolbar.setTitle("Mes Amis");
-                        fg.beginTransaction().replace(R.id.main, groupes).addToBackStack("back").commit();
 
                         return true;
                     case R.id.clendrierPropretaire:
@@ -124,6 +135,65 @@ public class ControleurMenu extends AppCompatActivity {
         }
 
          return false;
+    }
+
+
+    void getListeGroupe(int idU){
+        final int idUser=idU;
+        final ArrayList<Groupe> liste=new ArrayList<>();
+
+        StringRequest stringRequest=new StringRequest(Request.Method.POST, Constants.URL_GetUsersGroupe, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                //Récupération de la réponse JSON
+                try {
+                    JSONObject jsonObject= new JSONObject(response);
+
+                    if (jsonObject.getBoolean("error")){
+                        //erreur de retour
+                        Toast.makeText(getApplicationContext(),"Pas de groupe disponible", Toast.LENGTH_SHORT).show();
+                    }else{
+
+                        int nbEvenetsRecuperer =jsonObject.length()-2;
+                        JSONObject jsonObject2;
+                        for (int i = 0; i < nbEvenetsRecuperer ; i++){
+                            jsonObject2 = new JSONObject(jsonObject.getString(String.valueOf(i)));
+                            String nomGroupe = jsonObject2.getString("NomGroupe");
+                            //id Groupe non gérer dans la bdd
+                            if (!nomGroupe.equals("")) {
+                                liste.add(new Groupe(1, nomGroupe));
+                            }
+                        }
+
+                        ControleurListeGroupe groupes = new ControleurListeGroupe();
+                        groupes.setGroupes(liste);
+                        fg.beginTransaction().replace(R.id.main, groupes).addToBackStack("back").commit();
+
+                    }
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+
+                Map<String,String> params=new HashMap<>();
+                params.put("idUser", String.valueOf(idUser));
+                return params;
+            }
+        };
+        //not sure
+        RequestQueue requestQueue= Volley.newRequestQueue(this);
+
+        requestQueue.add(stringRequest);
+
     }
 
 }

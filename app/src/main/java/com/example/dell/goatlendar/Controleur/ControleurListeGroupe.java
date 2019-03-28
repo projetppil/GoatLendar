@@ -32,6 +32,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ControleurListeGroupe extends Fragment {
+
+   private  ArrayList<Groupe> groupes;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater , ViewGroup container , Bundle savedInstanceState){
@@ -40,9 +42,6 @@ public class ControleurListeGroupe extends Fragment {
         ListView liste_groupe = (ListView)view.findViewById((R.id.liste__groupes));
         //recupération de la liste des groupes
         //idU a modifier
-        ArrayList<Groupe> groupes = getListeGroupe(Application.getInstance().getUtilisateurActuel().getId());
-        System.out.println("size : "+groupes.size());
-        System.out.println(Application.getInstance().getUtilisateurActuel().getId());
         AdapterListeGroupe adapterListeGroupe = new AdapterListeGroupe(getContext() , groupes);
         liste_groupe.setAdapter(adapterListeGroupe);
 
@@ -142,56 +141,13 @@ public class ControleurListeGroupe extends Fragment {
         requestQueue.add(stringRequest);
     }
 
-    ArrayList<Groupe> getListeGroupe(int idU){
-        final int idUser=idU;
-        final ArrayList<Groupe> liste=new ArrayList<>();
 
-        StringRequest stringRequest=new StringRequest(Request.Method.POST, Constants.URL_GetUsersGroupe, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                //Récupération de la réponse JSON
-                try {
-                    JSONObject jsonObject= new JSONObject(response);
 
-                    if (jsonObject.getBoolean("error")){
-                        //erreur de retour
-                        Toast.makeText(getActivity(),"Pas de groupe disponible", Toast.LENGTH_SHORT).show();
-                    }else{
+    public ArrayList<Groupe> getGroupes() {
+        return groupes;
+    }
 
-                        int nbEvenetsRecuperer =jsonObject.length()-2;
-                        JSONObject jsonObject2;
-                        for (int i = 0; i < nbEvenetsRecuperer ; i++){
-                            jsonObject2 = new JSONObject(jsonObject.getString(String.valueOf(i)));
-                            String nomGroupe = jsonObject2.getString("NomGroupe");
-                            //id Groupe non gérer dans la bdd
-                            if (!nomGroupe.equals("")) {
-                                liste.add(new Groupe(1, nomGroupe));
-                            }
-                        }
-                    }
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-
-            }
-        }){
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-
-                Map<String,String> params=new HashMap<>();
-                params.put("idUser", String.valueOf(idUser));
-                return params;
-            }
-        };
-        //not sure
-        RequestQueue requestQueue= Volley.newRequestQueue(getActivity().getApplicationContext());
-
-        requestQueue.add(stringRequest);
-        return liste;
+    public void setGroupes(ArrayList<Groupe> groupes) {
+        this.groupes = groupes;
     }
 }
