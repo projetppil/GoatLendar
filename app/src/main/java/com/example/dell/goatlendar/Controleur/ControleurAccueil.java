@@ -188,13 +188,13 @@ public class ControleurAccueil extends Fragment  {
                  * recuperer unr arraylist<CompteUtilisateur> qui va contenir toutes les utilisateur de l'application
                  * dans mon cas je vais la remplir mannuellement apres changer la  avec les bonnes informations
                  */
-                final ArrayList<CompteUtilisateur> users;
-                users = Application.getInstance().getUsers(getContext());
+                final ArrayList<CompteUtilisateur> users = new ArrayList<>();
+                /*users = Application.getInstance().getUsers(getContext());
                 System.out.println("------------------------------------------------------------");
                 for(CompteUtilisateur c: users){
                     c.getNom();
                 }
-                System.out.println("------------------------------------------------------------");
+                System.out.println("------------------------------------------------------------");*/
                 final ArrayList<String> users_names = new ArrayList<>();
                 for (int i=0 ; i<users.size() ; i++)
                     users_names.add(users.get(i).getNom() + " "+ users.get(i).getPrenom());
@@ -234,6 +234,7 @@ public class ControleurAccueil extends Fragment  {
                 valider_creation.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+                        System.out.println("je clique sur le bouton valider");
                         TextView nom_evenement = promptView.findViewById(R.id.nomEvenement);
                         EditText anneeDebut_evenement = promptView.findViewById(R.id.anneeDebut);
                         EditText moisDebut_evenement = promptView.findViewById(R.id.moisDebut);
@@ -257,43 +258,47 @@ public class ControleurAccueil extends Fragment  {
                         if(md <= 12 && 0 < md && 0<mf && mf <= 12 && jd <=31 && jf <= 31 && 0<jd && 0<jf) {
                             if (nom_evenement.getText().toString().length() < 32) {
                                 if (ad <= af) {
-                                    if ((ad == af && md <= mf) || ad < af) {
-                                        if (lieu_evenement.getText().toString().length() < 32) {
-                                            String nom = nom_evenement.getText().toString();
-                                            String dateDebut = anneeDebut_evenement.getText().toString() +
-                                                    "-"+moisDebut_evenement.getText().toString() +
-                                                    "-"+jourDebut_evenement.getText().toString();
-                                            String heureDebut = heureDebut_evenement.getText().toString()+
-                                                    ":"+minuteDebut_evenement;
-                                            String dateFin = anneeFin_evenement.getText().toString() +
-                                                    "-"+moisFin_evenement.getText().toString() +
-                                                    "-"+jourFin_evenement.getText().toString();
-                                            String heureFin = heureFin_evenement.getText().toString()+
-                                                    ":"+minuteFin_evenement;
-                                            String lieu = lieu_evenement.getText().toString();
-                                            String desc = desc_evenement.getText().toString();
-                                            String type = "";
-                                            String image = "chemin";
-                                            if (type_evenement.getSelectedItem().toString().equals("Public")) {
-                                                type = "0";
-                                            } else if (type_evenement.getSelectedItem().toString().equals("Private")) {
-                                                type = "1";
+                                    System.out.println(ad == af && md <= mf);
+                                    if ((ad.equals(af) && md <= mf) || ad < af) {
+                                        if((md.equals(mf) && jd <= jf) || md < mf) {
+                                            if (lieu_evenement.getText().toString().length() < 32) {
+                                                String nom = nom_evenement.getText().toString();
+                                                String dateDebut = anneeDebut_evenement.getText().toString() +
+                                                        "-" + moisDebut_evenement.getText().toString() +
+                                                        "-" + jourDebut_evenement.getText().toString();
+                                                String heureDebut = heureDebut_evenement.getText().toString() +
+                                                        ":" + minuteDebut_evenement.getText().toString();
+                                                String dateFin = anneeFin_evenement.getText().toString() +
+                                                        "-" + moisFin_evenement.getText().toString() +
+                                                        "-" + jourFin_evenement.getText().toString();
+                                                String heureFin = heureFin_evenement.getText().toString() +
+                                                        ":" + minuteFin_evenement.getText().toString();
+                                                String lieu = lieu_evenement.getText().toString();
+                                                String desc = desc_evenement.getText().toString();
+                                                String type = "";
+                                                String image = "chemin";
+                                                if (type_evenement.getSelectedItem().toString().equals("Public")) {
+                                                    type = "0";
+                                                } else if (type_evenement.getSelectedItem().toString().equals("Private")) {
+                                                    type = "1";
+                                                }
+                                                Integer i = new Integer(Application.getInstance().getUtilisateurCourant().getId());
+                                                String idUser = i.toString();
+                                                System.out.println(nom);
+                                                System.out.println(dateDebut);
+                                                System.out.println(heureDebut);
+                                                System.out.println(dateFin);
+                                                System.out.println(heureFin);
+                                                System.out.println(lieu);
+                                                System.out.println(desc);
+                                                System.out.println(type);
+                                                System.out.println(idUser);
+                                                creerEvenement(nom, dateDebut, heureDebut, dateFin, heureFin, lieu, desc, idUser, type, image);
+                                            } else {
+                                                Toast.makeText(getContext(), "lieu incorrect", Toast.LENGTH_SHORT);
                                             }
-                                            Integer i = new Integer(Application.getInstance().getUtilisateurCourant().getId());
-                                            String idUser = i.toString();
-                                            System.out.println(nom);
-                                            System.out.println(dateDebut);
-                                            System.out.println(heureDebut);
-                                            System.out.println(dateFin);
-                                            System.out.println(heureFin);
-                                            System.out.println(lieu);
-                                            System.out.println(desc);
-                                            System.out.println(type);
-                                            System.out.println(idUser);
-                                            creerEvenement(nom, dateDebut, heureDebut, dateFin, heureFin, lieu, desc, idUser, type, image);
-
                                         }else{
-                                            Toast.makeText(getContext(),"lieu incorrect",Toast.LENGTH_SHORT);
+                                            Toast.makeText(getContext(), "date incorrect", Toast.LENGTH_SHORT);
                                         }
                                     }else{
                                         Toast.makeText(getContext(),"date incorrect",Toast.LENGTH_SHORT);
